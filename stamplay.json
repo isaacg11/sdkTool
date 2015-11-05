@@ -1,0 +1,10 @@
+{
+  "appId": "sdktool",
+  "apiKey": "a3e1218d2048b3b48b7b15f5861590a23dd9ac5f9443624f7e3b3f8b34765dfa",
+  "public": "./",
+  "ignore": [
+    "stamplay.json",
+    "**/.*",
+    "**/node_modules/**"
+  ]
+}

@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Custom Object SDK</title>
+	<link rel="stylesheet" type="text/css" href="public/css/materialize.css">
+	<link rel="stylesheet" type="text/css" href="public/css/main.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+</head>
+<body class="container-fluid">
+<!--NAVBAR-->
+  <nav>
+    <div id="navbar" class="nav-wrapper z-depth-2">
+      <a>
+        <img id="wordLogo" src="public/images/logo_White.png"/>
+      </a>
+      <a href="" class="brand-logo center">
+        <img id="logo" src="public/images/stamplay_logo.png"/>
+      </a>
+      <ul id="resourceMenu" class='right'>
+        <li>
+          <a href="index.html"><i class="fa fa-user left"></i>USER SDK</a>
+        <li>
+      </li>
+
+    </div>
+  </nav>
+<!--TABS-->
+  <div class="row">
+    <div class="col s12 tab-row">
+      <ul class="tabs">
+        <li class="tab col s3">
+          <a href="#create" class="active">CREATE OBJECT</a></li>
+        <li class="tab col s3">
+          <a href="#update">UPDATE OBJECT</a></li>
+        <li class="tab col s3">
+          <a href="#query">QUERY OBJECT</a></li>
+        <li class="tab col s3">
+          <a href="#rate">RATE/ VOTE / COMMENT</a></li>
+      </ul>
+    </div>
+  </div>
+<!--..............................TAB 1...............................-->
+
+<!--CREATED OBJECT OUTPUT-->
+<div id="create">
+  <ul  class="collection container z-depth-1 objectOutput">
+      <li class="collection-item center header"><b>New Book Data</b>
+      <li class="collection-item data"><b>Book Title:</b>
+      <span class="outputData" id="objectOutputName"></span></li>
+      <li class="collection-item data"><b>Author:</b>
+      <span class="outputData" id="objectOutputAuthor"></span></li>
+      <li class="collection-item data"><b>Dt_Created: </b>
+      <span class="outputData" id="objectOutputDate"></span></li>
+      <li class="collection-item data"><b>ID: </b>
+      <span class="outputData" id="objectOutputID"></span></li>
+  </ul>
+  <br>
+  <br>
+<!--CREATE OBJECT INPUT-->
+  <div class="row container z-depth-1 createSection">
+    <form class="col s12">
+      <div class='row'>
+        <p class="center header"><b>Create Book Data</b></p>
+      </div>
+      <div class="row">
+        <div 
+          id="input"
+          onclick="resetCreated()" 
+          class="input-field col s12">
+          <input  
+            placeholder="Book Title..." 
+            id="objectName" 
+            type="text">
+        </div>
+        <div 
+          id="input"
+          onclick="reset()" 
+          class="input-field col s12">
+        <input  
+          placeholder="Author..." 
+          id="objectAuthor" 
+          type="text">
+        </div>
+        <div 
+          id="input"
+          onclick="reset()" 
+          class="input-field col s12">
+        <input  
+          placeholder="Price..." 
+          id="objectPrice" 
+          type="text">
+        </div>
+         <div 
+          id="input"
+          onclick="reset()" 
+          class="input-field col s12">
+          <input
+            placeholder="Date Published..." 
+            id="objectDate" 
+            type="date" 
+            class="datepicker">
+        </div>
+      </div>
+      <div class="row center">
+        <div class="input-field col s12">
+          <a 
+            onclick="createObject()" 
+            id="btn" 
+            class="waves-effect waves-light btn-large">
+          <i class="fa fa-plus-circle right"></i>Create Book</a>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+<!--..............................TAB 2...............................-->
+
+<!--UPDATED OBJECT OUTPUT-->
+<div id="update">
+  <ul class="collection container z-depth-1 objectOutput">
+      <li class="collection-item center header"><b>Book Data</b>
+      <li class="collection-item category"><b>Book Title:</b>
+      <span class="outputData" id="updateOutputName"></span></li>
+      <li class="collection-item category"><b>Author:</b>
+      <span class="outputData" id="updateOutputAuthor"></span></li>
+      <li class="collection-item category"><b>Dt_Updated: </b>
+      <span class="outputData" id="updateOutputDate"></span></li>
+      <li class="collection-item category"><b>ID: </b>
+      <span class="outputData" id="updateOutputID"></span></li>
+  </ul>
+  <br>
+  <br>
+<!--UPDATE OBJECT INPUT-->
+  <div class="row container z-depth-1 createSection">
+    <form class="col s12">
+      <div class='row'>
+        <p class="center header"><b>Update Book Data</b></p>
+      </div>
+      <div class="row">
+        <div id="input" class="input-field col s12">
+          <input
+            placeholder="New Book Title..."  
+            id="title" 
+            type="text">
+        </div>
+        <div id="input" class="input-field col s12">
+          <input
+            placeholder="New Author..."  
+            id="author" 
+            type="text">
+        </div>
+      </div>
+      <div class="row center">
+        <div class="input-field col s12">
+          <a 
+            onclick="updateObject()" 
+            id="btn" 
+            class="waves-effect waves-light btn-large">
+          <i class="fa fa-pencil-square-o right"></i>Update Book</a>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+<br>
+<!--..............................TAB 3...............................-->
+
+<!--QUERY OUTPUT-->
+<div id="query">
+  <ul id="queryResults" class="collection container z-depth-1">
+      <li class="collection-item center queryheader">
+      <b>Resturaunt Query Results</b>
+      <li class="collection-item category"><b>Resturaunt:</b>
+      <span class="queryheader" id="queryOutputName"></span></li>
+      <li class="collection-item category"><b>Cuisine: </b>
+      <span class="queryheader" id="queryOutputCuisine"></span></li>
+      <li class="collection-item category"><b>City: </b>
+      <span class="queryheader" id="queryOutputCity"></span></li>
+      <li class="collection-item category"><b>Address: </b>
+      <span class="queryheader" id="queryOutputAddress"></span></li>
+  </ul>
+<!--QUERY OPTIONS-->
+  <ul id="options" class="collection container z-depth-1">
+      <li class="collection-item center queryheader"><b>Query Options</b>
+      <li class="collection-item data">
+      <b class="category">Cuisine: </b>
+      <span class="queryheader">American, Chinese, Italian, Mexican</span>
+      </li>
+      <li class="collection-item data">
+      <b class="category">Cities: </b> 
+      <span class="queryheader">San Fransisco, Los Angeles, New York City, Chicago</span>
+      </li>
+  </ul>
+
+  <br>
+  <br>
+<!--QUERY INPUT-->
+  <div class="row container z-depth-1 createSection">
+    <form class="col s12">
+      <div class="row">
+        <p class="center ptag">
+          <b class='queryheader'>Find a resturaunt!</b>
+        </p>
+      </div>
+      <div class="row">
+        <div 
+          onclick="reset()" 
+          id="input"
+          class="input-field col s12">
+          <input  
+            placeholder="Cuisine..." 
+            id="cuisine" 
+            type="text">
+        </div>
+        <div 
+          id="input"
+          class="input-field col s12">
+          <input  
+            placeholder="City..." 
+            id="city" 
+            type="text">
+        </div>
+      </div>
+      <div class="row center">
+        <div class="input-field col s12">
+          <a 
+            onclick="queryObject()" 
+            id="btn" 
+            class="waves-effect waves-light btn-large">
+          <i class="fa fa-search right"></i></i>Query Object</a>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+<!--..............................TAB 4...............................-->
+
+<!--RATING/VOTING OUTPUT-->
+<div id="rate">
+  <ul id="queryResults" class="collection container z-depth-1">
+      <li class="collection-item center queryheader"><b>Example Resturaunt Data</b>
+      <li class="collection-item category"><b>Resturaunt:</b>
+      <span class="queryheader" id="rateOutputName"></span></li>
+      <li class="collection-item category"><b>Rating: </b>
+      <span class="queryheader" id="rateOutputRatings"></span></li>
+      <li class="collection-item category"><b>Likes: </b>
+      <span class="queryheader" id="rateOutputLikes"></span></li>
+      <li class="collection-item category"><b>Review: </b>
+      <span class="queryheader" id="rateOutputReview"></span></li>
+  </ul>
+  <br>
+
+<!--RATING-->
+  <div id="ratingSection" class="row z-depth-1">
+    <form action="#" class="col s12">
+    <div class="row queryheader">
+      <p class="center">
+        <i class="fa fa-star-o"></i>
+        <b>Rate this resturaunt</b>
+      </p>
+    </div>
+      <div class="row container center">
+        <div class="input-field col s2">
+          <p>
+            <input
+              onclick = "rateFive()" 
+              type="checkbox" 
+              id="fiveStars" />
+              <label for="fiveStars"> 5</label>
+          </p>
+        </div>
+        <div class="input-field col s2">
+          <p>
+            <input
+              onclick = "rateFour()" 
+              type="checkbox" 
+              id="fourStars" />
+              <label for="fourStars"> 4</label>
+          </p>
+        </div>
+        <div class="input-field col s2">
+          <p>
+            <input
+              onclick = "rateThree()" 
+              type="checkbox" 
+              id="threeStars" />
+              <label for="threeStars"> 3</label>
+          </p>
+        </div>
+        <div class="input-field col s2">
+          <p>
+            <input
+              onclick = "rateTwo()" 
+              type="checkbox" 
+              id="twoStars"/>
+              <label for="twoStars"> 2</label>
+          </p>
+        </div>
+        <div class="input-field col s2">
+          <p>
+            <input
+              onclick = "rateOne()" 
+              type="checkbox" 
+              id="oneStar" />
+              <label for="oneStar"> 1</label>
+          </p>
+        </div>
+      </div>
+    </form>
+  </div>
+
+<!--UPVOTE/DOWNVOTE-->
+  <div id="voteSection" class="row center z-depth-1">
+      <div class="input-field col s6">
+        <a 
+          onclick="upvote()" 
+          class="waves-effect waves-light btn-large thumbs">
+        <i class="fa fa-thumbs-o-up center"></i></a>
+      </div>
+      <div class="input-field col s6">
+        <a 
+          onclick="downvote()" 
+          class="waves-effect waves-light btn-large thumbs">
+        <i class="fa fa-thumbs-o-down center"></i></a>
+      </div>
+  </div>
+
+<!--REVIEW SECTION-->
+  <div class="row container z-depth-1 createSection">
+    <form class="col s12">
+      <div class="row">
+        <p class="center ptag">
+          <b class='queryheader'>Leave a review</b>
+        </p>
+      </div>
+      <div class="row">
+        <div 
+        onclick="reset()" 
+        id="input"
+        class="input-field col s12">
+          <input  
+          placeholder="Review..." 
+          id="review" 
+          type="text">
+        </div>
+      </div>
+      <div class="row center">
+        <div class="input-field col s12">
+          <a 
+          onclick="review()" 
+          id="btn" 
+          class="waves-effect waves-light btn-large">
+          <i class="fa fa-check-square-o right"></i></i>SUBMIT</a>
+        </div>
+      </div>
+    </form>
+  </div>
+
+</div>
+
+<!--SDK-->
+<script src="//drrjhlchpvi7e.cloudfront.net/libs/stamplay-js-sdk/1.3.0/stamplay.min.js"></script>
+<script src="./bower_components/jquery/dist/jquery.js"></script>
+<script src="./public/js/materialize.min.js"></script>
+<script src="public/app.js"></script>
+</body>
+</html>
