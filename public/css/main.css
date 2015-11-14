@@ -108,7 +108,7 @@ body, html {
 	background-color: #EEEEEE;
 }
 #navbar{
-	background-color: #3D3F4D;
+	background-color: #262D4D;
 	height: 80px;
 }
 #logo{
@@ -120,6 +120,16 @@ body, html {
 	padding: 10px;
     height: 45px;
 	margin-top: 15px;
+}
+#lzHeader{
+	margin-top: 8px;
+	font-family: "Roboto";
+}
+#gradCap{
+	color: #FBC02D;
+}
+#lz{
+	color: #FFFFFF;
 }
 #resourceMenu{
 	margin-top: 10px;
