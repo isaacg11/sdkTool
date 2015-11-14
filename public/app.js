@@ -2,22 +2,22 @@ Stamplay.init('sdktool');
 
 
 /*-----------*/
-/* NAVBAR    */
+/* DROPDOWN  */
 /*-----------*/
-// function goToObject(){
-// 	var newUser = new Stamplay.User().Model;
-// 	newUser.currentUser().then(function(){
-// 		if(newUser.isLogged()){
-// 			document.location.href = 'objects.html';
-// 		}
-// 		else{
-// 			Materialize.toast('You must log in first!', 3000);
-// 		}
-// 	});
-// }
+jQuery('.dropdown-button').dropdown({
+      inDuration: 300,
+      outDuration: 225,
+      constrain_width: false, // Does not change width of dropdown to that of the activator
+      hover: true, // Activate on hover
+      gutter: 0, // Spacing from edge
+      belowOrigin: true, // Displays dropdown below the button
+      alignment: 'left' // Displays dropdown with edge aligned to the left of button
+    });
 
-$(".dropdown-button").dropdown();
 
+/*-----------*/
+/*   DATE    */
+/*-----------*/
 $('.datepicker').pickadate({
     	selectMonths: true,
     	selectYears: 15 
@@ -47,6 +47,14 @@ function createObject(){
 		var datePublished = objectInstance.instance.datepublished;
 		var date = objectInstance.get('dt_create');
 		var id = objectInstance.get('_id');
+		var body = {
+			title: title,
+			author: author,
+			price: price,
+			datePublished: datepublished,
+		};
+
+
 		document.getElementById("objectOutputName").innerHTML = title;
 		document.getElementById("objectOutputAuthor").innerHTML = author;
 		document.getElementById("objectOutputDate").innerHTML = date;
@@ -250,6 +258,12 @@ function signUp() {
 		document.getElementById('userOutputEmail').innerHTML = email;
 		document.getElementById('userOutputDate').innerHTML = date;
 		document.getElementById('userOutputID').innerHTML = id;
+		document.getElementById('consoleBody').innerHTML = 
+		"{" + "displayname:" + " " + "'"+displayname+"'" + ", " + 
+			  "email:" + " " + "'"+email+"'" + ", " + 
+			  "password:" + " " + "'"+password+"'" + "}";
+
+		document.getElementById('consoleRes').innerHTML = newUser.instance;
 
 		document.getElementById('name').value = "";
 		document.getElementById('email').value = "";

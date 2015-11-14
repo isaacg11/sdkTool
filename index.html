@@ -9,21 +9,6 @@
 </head>
 <body class="container-fluid">
 <!--NAVBAR-->
-<ul id="dropdown1" class="dropdown-content">
-  <li><a id="viewCode" href="#!">
-  <i class="fa fa-github left"></i>Code</a></li>
-  <li class="divider"></li>
-  <li><a id="tutorial" href="#!">
-  <i class="fa fa-youtube-square left"></i>Tutorial</a></li>
-  <li class="divider"></li>
-  <li><a 
-        target="_blank"
-        id="sdkdocs" 
-        href="https://stamplay.com/docs/jssdk">
-        <i class="fa fa-file-text-o left"></i>Docs
-      </a>
-  </li>
-</ul>
   <nav>
     <div id="navbar" class="nav-wrapper z-depth-2">
       <a>
@@ -35,21 +20,42 @@
         </i>
       </a>
       <ul id="resourceMenu" class="right">
-        <li>
-          <a 
-            class="dropdown-button" 
-            href="#!" 
-            data-activates="dropdown1">
-              <i class="fa fa-caret-down right"></i>SDK - Users
+      <li><a
+            id="navSelectUsers" 
+            class='dropdown-button' 
+            href='#' 
+            data-activates='dropdown1'>
+            <i class="fa fa-caret-down right"></i>SDK - Users
           </a>
-        </li>
-      </ul>
+          <ul id='dropdown1' class='dropdown-content'>
+              <li class="dropdownitem">
+                <a id="dropdownText1">Main Menu</a>
+              </li>
+              <li class="divider"></li>
+              <li class="dropdownitem">
+                <a id="dropdownText2" href="objects.html">
+                  <i id='objAPI' class="fa fa-cubes right"></i>[SDK] - Objects
+                </a>
+              </li>
+              <li class="divider"></li>
+              <li class="dropdownitem">
+                <a id="dropdownText2">
+                  <i id="userSDK" class="fa fa-user right"></i>[API] - Users
+                </a>
+              </li>
+              <li class="divider"></li>
+              <li class="dropdownitem">
+                <a id="dropdownText3">
+                  <i id="objSDK" class="fa fa-cubes right"></i>[API] - Objects
+                </a>
+              </li>
+        </ul>
     </div>
   </nav>
 <!--TABS-->
   <div class="row">
     <div class="col s12 tab-row">
-      <ul class="tabs">
+      <ul id="tabRow" class="tabs">
         <li class="tab col s3">
         <a href="#local">EMAIL & PASSWORD</a></li>
         <li class="tab col s3">
@@ -57,9 +63,15 @@
       </ul>
     </div>
   </div>
-<!--EMAIL & PASSWORD USER OUTPUT SECTION-->
-      <div id="local" class="col s12">
-         <ul id="userOutput" class="collection container z-depth-1">
+  <!--////////////////////////// EMAIL & PASSWORD TAB ///////////////////////////-->
+  <div id="local" class="row">
+ <!--EMAIL & PASSWORD USER OUTPUT SECTION-->
+    <div id="userEPLeft" class="col s4">
+      <div class="chip">
+        <i class="fa fa-eye"></i> User View
+      </div>
+      <div id="local">
+         <ul id="userOutput" class="collection z-depth-1">
             <li class="collection-item data"><b>Display Name:</b>
             <span id="userOutputName"></span></li>
             <li class="collection-item data"><b>Email: </b>
@@ -69,7 +81,6 @@
             <li class="collection-item data"><b>ID: </b>
             <span id="userOutputID"></span></li>
         </ul>
-        <br>
 <!--EMAIL & PASSWORD USER SIGN UP SECTION-->
        <div id="local" class="row z-depth-1 inputBoxLocal">
           <form class="col s12">
@@ -112,6 +123,50 @@
           </form>
         </div>
       </div>
+    </div>
+    <div id="userEPRight" class= "col s8">
+    <div class="chip">
+      <i class="fa fa-code"></i> Code Details
+    </div>
+    <div class="z-depth-1 codeContent">
+      <i class="fa fa-github small right github tooltipped" data-position="bottom" data-delay="50" data-tooltip="view full code"></i><span><i class="fa fa-youtube-square small right youtube tooltipped" data-position="bottom" data-delay="50" data-tooltip="view tutorial"></i></span> 
+      <pre> SDK Function - Create User<input id="copyInputEP" class="left" type="text" ng-model="textToCopyEP" value=" signup()">
+      </pre>
+    </div>
+    <div id="sourceCodeEP" class="z-depth-1"> 
+<!--........................................................-->
+<pre>
+Stamplay.init('sdktool');
+
+ function signUp() {
+  var name = document.getElementById("name").value;
+  var email = document.getElementById("email").value;
+  var password = document.getElementById("password").value;
+
+  var registrationData = {
+    displayname: name,
+    email : email,
+    password: password
+  };
+  var newUser = new Stamplay.User().Model;
+  <b>newUser.signup(registrationData)</b>.then(function(){
+  });
+</pre>
+<!--........................................................-->
+    </div>
+    <div id="console" class="z-depth-1">
+<!--........................................................-->
+<pre> <b>Console</b>
+  <span id="consoleCursor" class="blinking-cursor">_</span>
+<br><span id="consoleStatus" class="hidden"> Status: 200 OK</span>
+<br> Body:<span id="consoleBody" class="hidden"></span>
+<br> Response:<span id="consoleRes" class="hidden"></span>
+</pre>
+<!--........................................................-->
+    </div>
+  </div>
+</div>
+
 <!--FACEBOOK USER OUTPUT SECTION-->
       <div id="facebook" class="col s12">
          <ul id="userOutput" class="collection container z-depth-1">
