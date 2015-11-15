@@ -167,15 +167,21 @@ Stamplay.init('sdktool');
   </div>
 </div>
 <!--FOOTER-->
-  <br>
+  <!-- <br>
   <br>
   <footer id="footer" id="local" class="page-footer z-depth-1 footer">
     <div class="container"></div>
-  </footer>
+  </footer> -->
 
+<!--////////////////////////// FACEBOOK TAB ///////////////////////////-->
+  <div id="facebook" class="row">
+    <div id="userFBLeft" class="col s4">
+      <div class="chip">
+        <i class="fa fa-eye"></i> User View
+      </div>
 <!--FACEBOOK USER OUTPUT SECTION-->
       <div id="facebook" class="col s12">
-         <ul id="userOutput" class="collection container z-depth-1">
+         <ul id="userOutput" class="collection z-depth-1">
             <li class="collection-item data center">
             <img src="public/images/fb avatar.gif" id="fbPhoto"/></li>
             <li class="collection-item data"><b>Display Name:</b>
@@ -193,7 +199,7 @@ Stamplay.init('sdktool');
 <!--FACEBOOK USER SIGN UP SECTION-->
         <div 
         id="facebook" 
-        class="col s12 container z-depth-1 center inputBoxFB">
+        class="z-depth-1 center inputBoxFB">
              <a 
               onclick="facebook()" 
               id="btn" 
@@ -202,7 +208,41 @@ Stamplay.init('sdktool');
               Sign Up
               </a>
         </div>
+      </div>
+    </div>
+    <div id="userFBRight" class= "col s8">
+    <div class="chip">
+      <i class="fa fa-code"></i> Code Details
+    </div>
+    <div class="z-depth-1 codeContent">
+      <i class="fa fa-github small right github tooltipped" data-position="bottom" data-delay="50" data-tooltip="view full code"></i><span><i class="fa fa-youtube-square small right youtube tooltipped" data-position="bottom" data-delay="50" data-tooltip="view tutorial"></i></span> 
+      <pre> SDK Function - Login with Facebook<input id="copyInputEP" class="left" type="text" ng-model="textToCopyEP" value=" login('facebook')">
+      </pre>
+    </div>
+    <div id="sourceCodeFB" class="z-depth-1"> 
+<!--........................................................-->
+<pre>
+Stamplay.init('sdktool');
 
+ function facebook(){
+  var newUser = new Stamplay.User().Model;
+  <b>newUser.login('facebook')</b>;
+}
+</pre>
+<!--........................................................-->
+    </div>
+    <div id="console" class="z-depth-1">
+<!--........................................................-->
+<pre> <b>Console</b>
+  <span id="consoleCursorFB" class="blinking-cursor">_</span>
+<br><span id="consoleStatusFB" class="hidden"> Status: 200 OK</span>
+<br><span id="hideBodyFB" class="hidden"> Body:</span><span id="consoleBodyFB" class="hidden"></span>
+<br><span id="hideResFB" class="hidden"> Response:</span><span id="consoleResFB" class="hidden"></span>
+</pre>
+<!--........................................................-->
+    </div>
+  </div>
+</div>
 <!--SCRIPTS-->
 <script src="//drrjhlchpvi7e.cloudfront.net/libs/stamplay-js-sdk/1.3.1/stamplay.min.js"></script>
 <script src="./bower_components/jquery/dist/jquery.js"></script>

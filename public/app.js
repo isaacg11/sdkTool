@@ -311,20 +311,48 @@ function resetSignUp(){
 window.onload = function(){
 	var newUser = new Stamplay.User().Model;
 	newUser.currentUser().then(function(){
-	var photo = newUser.get('profileImg');
-	var firstName = newUser.instance.identities.facebook._json.first_name;
-	var lastName = newUser.instance.identities.facebook._json.last_name;
-	var email = newUser.get('email');
-	var gender = newUser.instance.identities.facebook._json.gender;
-	var date = newUser.get('dt_create');
-	var id = newUser.get('_id');
+		if(newUser.isLogged() === true){
+			console.log(newUser.instance);
+			var photo = newUser.get('profileImg');
+			var firstName = newUser.instance.identities.facebook._json.first_name;
+			var lastName = newUser.instance.identities.facebook._json.last_name;
+			var email = newUser.get('email');
+			var gender = newUser.instance.identities.facebook._json.gender;
+			var date = newUser.get('dt_create');
+			var id = newUser.get('_id');
 
-	document.getElementById('fbPhoto').src = photo;
-	document.getElementById('fbName').innerHTML = firstName + " " + lastName;
-	document.getElementById('fbEmail').innerHTML = email;
-	document.getElementById('fbGender').innerHTML = gender;
-	document.getElementById('fbDate').innerHTML = date;
-	document.getElementById('fbID').innerHTML = id;
+			document.getElementById('fbPhoto').src = photo;
+			document.getElementById('fbName').innerHTML = firstName + " " + lastName;
+			document.getElementById('fbEmail').innerHTML = email;
+			document.getElementById('fbGender').innerHTML = gender;
+			document.getElementById('fbDate').innerHTML = date;
+			document.getElementById('fbID').innerHTML = id;
+			document.getElementById('consoleCursorFB').className = "hidden";
+			document.getElementById('consoleStatusFB').className = "";
+			document.getElementById('consoleBodyFB').className = "";
+			document.getElementById('hideBodyFB').className = "";
+			document.getElementById('consoleResFB').className = "";
+			document.getElementById('hideResFB').className = "";
+			document.getElementById('consoleBodyFB').innerHTML = " { } ";
+			document.getElementById('consoleResFB').innerHTML = 
+			"{" + "__v:" + " " + "'"+newUser.instance.__v+"'" + ", " + 
+			  	"displayname:" + " " + "'"+newUser.instance.displayname+"'" + ", " + 
+			  	"email:" + " " + "'"+newUser.instance.email+"'" + ", " + 
+			  	"password:" + " " + "'"+newUser.instance.password+"'" + ", " + 
+			  	"givenRole:" + " " + "'"+newUser.instance.givenRole+"'" + ", " +
+			  	"_id:" + " " + "'"+newUser.instance._id+"'" + ", " + 
+			  	"appId:" + " " + "'"+newUser.instance.appId+"'" + ", " + 
+			  	"dt_create:" + " " + "'"+newUser.instance.dt_create+"'" + ", " + 
+			  	"dt_update:" + " " + "'"+newUser.instance.dt_update+"'" + ", " +
+			  	"emailVerified:" + " " + "'"+newUser.instance.emailVerified+"'" + ", " + 
+			  	"profileImg:" + " " + "'"+newUser.instance.profileImg+"'" + ", " + 
+			  	"salt:" + " " + "'"+newUser.instance.salt+"'" + ", " + 
+			  	"verificationCode:" + " " + "'"+newUser.instance.verificationCode+"'" + 
+			"}";
+		}	
+		else{
+			console.log('You must login to see user info');
+		}
 	});
 
 	var bookInstance = new Stamplay.Cobject('book').Model;

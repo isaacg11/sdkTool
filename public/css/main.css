@@ -34,7 +34,10 @@ body, html {
 }
 #resourceMenu{
 	margin-top: 10px;
-	margin-right: 10px;
+}
+#navSelectUsers:hover{
+	background-color: #262D4D !important;
+	color: #FBC02D;
 }
 #objAPI{
 	font-size: 20px;
@@ -193,7 +196,6 @@ body, html {
 .hidden{
 	display: none;
 }
-
 .codeContent{
 	margin-top: 15px;
 	overflow: auto;
