@@ -57,9 +57,9 @@
     <div class="col s12 tab-row">
       <ul id="tabRow" class="tabs">
         <li class="tab col s3">
-        <a href="#local">EMAIL & PASSWORD</a></li>
+        <a class="active" href="#local">EMAIL & PASSWORD</a></li>
         <li class="tab col s3">
-        <a class="active" href="#facebook">FACEBOOK</a></li>
+        <a href="#facebook">FACEBOOK</a></li>
       </ul>
     </div>
   </div>
@@ -130,7 +130,7 @@
     </div>
     <div class="z-depth-1 codeContent">
       <i class="fa fa-github small right github tooltipped" data-position="bottom" data-delay="50" data-tooltip="view full code"></i><span><i class="fa fa-youtube-square small right youtube tooltipped" data-position="bottom" data-delay="50" data-tooltip="view tutorial"></i></span> 
-      <pre> SDK Function - Create User<input id="copyInputEP" class="left" type="text" ng-model="textToCopyEP" value=" signup()">
+      <pre> SDK Function - Create User with Email/Password<input id="copyInputEP" class="left" type="text" ng-model="textToCopyEP" value=" signup()">
       </pre>
     </div>
     <div id="sourceCodeEP" class="z-depth-1"> 
@@ -144,7 +144,7 @@ Stamplay.init('sdktool');
   var password = document.getElementById("password").value;
 
   var registrationData = {
-    displayname: name,
+    displayName: name,
     email : email,
     password: password
   };
@@ -159,13 +159,19 @@ Stamplay.init('sdktool');
 <pre> <b>Console</b>
   <span id="consoleCursor" class="blinking-cursor">_</span>
 <br><span id="consoleStatus" class="hidden"> Status: 200 OK</span>
-<br> Body:<span id="consoleBody" class="hidden"></span>
-<br> Response:<span id="consoleRes" class="hidden"></span>
+<br><span id="hideBody" class="hidden"> Body:</span><span id="consoleBody" class="hidden"></span>
+<br><span id="hideRes" class="hidden"> Response:</span><span id="consoleRes" class="hidden"></span>
 </pre>
 <!--........................................................-->
     </div>
   </div>
 </div>
+<!--FOOTER-->
+  <br>
+  <br>
+  <footer id="footer" id="local" class="page-footer z-depth-1 footer">
+    <div class="container"></div>
+  </footer>
 
 <!--FACEBOOK USER OUTPUT SECTION-->
       <div id="facebook" class="col s12">
@@ -197,17 +203,8 @@ Stamplay.init('sdktool');
               </a>
         </div>
 
-
-<!--SDK-->
-
-    <script src="//drrjhlchpvi7e.cloudfront.net/libs/stamplay-js-sdk/1.3.1/stamplay.min.js"></script>
-
-
-
-
-
-
-
+<!--SCRIPTS-->
+<script src="//drrjhlchpvi7e.cloudfront.net/libs/stamplay-js-sdk/1.3.1/stamplay.min.js"></script>
 <script src="./bower_components/jquery/dist/jquery.js"></script>
 <script src="./public/js/materialize.min.js"></script>
 <script src="public/app.js"></script>

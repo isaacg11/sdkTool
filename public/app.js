@@ -243,13 +243,13 @@ function signUp() {
 	var password = document.getElementById("password").value;
 
 	var registrationData = {
-		displayname: name,
+		displayName: name,
   		email : email,
   		password: password
 	};
 	var newUser = new Stamplay.User().Model;
 	newUser.signup(registrationData).then(function(){
-		var displayname = newUser.get('displayname');
+		var displayname = newUser.get('displayName');
 		var email = newUser.get('email');
 		var date = newUser.get('dt_create');
 		var id = newUser.get('_id');
@@ -258,17 +258,36 @@ function signUp() {
 		document.getElementById('userOutputEmail').innerHTML = email;
 		document.getElementById('userOutputDate').innerHTML = date;
 		document.getElementById('userOutputID').innerHTML = id;
+		document.getElementById('consoleCursor').className = "hidden";
+		document.getElementById('consoleStatus').className = "";
+		document.getElementById('consoleBody').className = "";
+		document.getElementById('hideBody').className = "";
+		document.getElementById('consoleRes').className = "";
+		document.getElementById('hideRes').className = "";
 		document.getElementById('consoleBody').innerHTML = 
 		"{" + "displayname:" + " " + "'"+displayname+"'" + ", " + 
 			  "email:" + " " + "'"+email+"'" + ", " + 
-			  "password:" + " " + "'"+password+"'" + "}";
-
-		document.getElementById('consoleRes').innerHTML = newUser.instance;
+			  "password:" + " " + "'"+password+"'" + 
+		"}";
+		document.getElementById('consoleRes').innerHTML = 
+		"{" + "__v:" + " " + "'"+newUser.instance.__v+"'" + ", " + 
+			  "displayname:" + " " + "'"+newUser.instance.displayname+"'" + ", " + 
+			  "email:" + " " + "'"+newUser.instance.email+"'" + ", " + 
+			  "password:" + " " + "'"+newUser.instance.password+"'" + ", " + 
+			  "givenRole:" + " " + "'"+newUser.instance.givenRole+"'" + ", " +
+			  "_id:" + " " + "'"+newUser.instance._id+"'" + ", " + 
+			  "appId:" + " " + "'"+newUser.instance.appId+"'" + ", " + 
+			  "dt_create:" + " " + "'"+newUser.instance.dt_create+"'" + ", " + 
+			  "dt_update:" + " " + "'"+newUser.instance.dt_update+"'" + ", " +
+			  "emailVerified:" + " " + "'"+newUser.instance.emailVerified+"'" + ", " + 
+			  "profileImg:" + " " + "'"+newUser.instance.profileImg+"'" + ", " + 
+			  "salt:" + " " + "'"+newUser.instance.salt+"'" + ", " + 
+			  "verificationCode:" + " " + "'"+newUser.instance.verificationCode+"'" + 
+		"}";
 
 		document.getElementById('name').value = "";
 		document.getElementById('email').value = "";
 		document.getElementById('password').value = "";
-		Materialize.toast('Success!', 4000);
 	});
 }
 
