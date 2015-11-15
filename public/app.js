@@ -32,7 +32,6 @@ function createObject(){
 	var published = new Date(objectDate);
 	var price = parseFloat(objectPrice);
 
-	console.log(objectImg);
 
 	var objectInstance = new Stamplay.Cobject('book').Model;
 	objectInstance.set('title', objectName);
@@ -46,29 +45,37 @@ function createObject(){
 		var author = objectInstance.instance.author;
 		var price = objectInstance.instance.price;
 		var datePublished = objectInstance.instance.datePublished;
-		var date = objectInstance.get('dt_create');
-		var id = objectInstance.get('_id');
 		var img = objectInstance.get('bookImage');
-		var body = {
-			title: title,
-			author: author,
-			price: price,
-			datePublished: datePublished,
-			bookImage: img
-		};
-
+		
 		document.getElementById("objectOutputName").innerHTML = title;
 		document.getElementById("objectOutputAuthor").innerHTML = author;
-		document.getElementById("objectOutputDate").innerHTML = date;
-		document.getElementById("objectOutputID").innerHTML = id;
+		document.getElementById("objectOutputPrice").innerHTML = price;
+		document.getElementById("objectOutputPublished").innerHTML = datePublished;
 		document.getElementById("bookImage").src = img;
+
 		document.getElementById('createConsoleCursor').className = "hidden";
 		document.getElementById('createConsoleStatus').className = "";
-		document.getElementById('createConsoleBody').className = "";
 		document.getElementById('createHideBody').className = "";
-		document.getElementById('createConsoleRes').className = "";
-		document.getElementById('createHideRes').className = "";
-		document.getElementById('createConsoleBody').innerHTML = body;
+		document.getElementById('createConsoleBody').innerHTML = 
+		"{" + "title:" + " " + "'"+title+"'" + ", " + 
+			  "author:" + " " + "'"+author+"'" + ", " + 
+			  "price:" + " " + "'"+price+"'" + ", " +
+			  "datePublished:" + " " + "'"+datePublished+"'" + ", " + 
+			  "author:" + " " + "'"+author+"'" + ", " + 
+			  "bookImage:" + " " + "'"+img+"'" +
+		"}";
+		document.getElementById('createHideConsoleRes').className = "";
+		document.getElementById('createConsoleRes').innerHTML = 
+		"{" + "__v:" + " " + "'"+objectInstance.instance.__v+"'" + ", " + 
+			  "_id:" + " " + "'"+objectInstance.instance._id+"'" + ", " + 
+			  "comments:" + " " + "'"+objectInstance.instance.actions.comments+"'" + ", " +
+			  "ratings:" + " " + "'"+objectInstance.instance.actions.ratings.avg+"'" + ", " + 
+			  "votes:" + " " + "'"+objectInstance.instance.actions.votes.users+"'" + ", " + 
+			  "appId:" + " " + "'"+objectInstance.instance.appId+"'" + ", " +
+			  "cobjectId:" + " " + "'"+objectInstance.instance.cobjectId+"'" + ", " + 
+			  "dt_create:" + " " + "'"+objectInstance.instance.dt_create+"'" + ", " + 
+			  "dt_update:" + " " + "'"+objectInstance.instance.dt_update+"'" + 
+		"}";
 
 		document.getElementById("objectName").value = "";
 		document.getElementById("objectAuthor").value = "";

@@ -84,10 +84,10 @@
       <span class="outputData" id="objectOutputName"></span></li>
       <li class="collection-item data"><b>Author:</b>
       <span class="outputData" id="objectOutputAuthor"></span></li>
-      <li class="collection-item data"><b>Dt_Created: </b>
-      <span class="outputData" id="objectOutputDate"></span></li>
-      <li class="collection-item data"><b>ID: </b>
-      <span class="outputData" id="objectOutputID"></span></li>
+      <li class="collection-item data"><b>Price: </b>
+      <span class="outputData" id="objectOutputPrice"></span></li>
+      <li class="collection-item data"><b>Published: </b>
+      <span class="outputData" id="objectOutputPublished"></span></li>
   </ul>
 <!--CREATE OBJECT INPUT-->
   <div class="row z-depth-1 createSection">
@@ -138,7 +138,7 @@
           type="text">
           </div>
         </div>
-      <div class="row center">
+        <div class="row center">
         <div class="input-field col s12">
           <a 
             onclick="createObject()" 
@@ -189,12 +189,10 @@
 <!--........................................................-->
   <div id="console" class="z-depth-1">
 <pre> <b>Console</b>
-  <span id="consoleCursorCreate" class="blinking-cursor">_</span>
+  <span id="createConsoleCursor" class="blinking-cursor">_</span>
   <br><span id="createConsoleStatus" class="hidden"> Status: 200 OK</span>
-  <br><span id="createHideBody"> Body:</span>
-  <span id="createConsoleBody" class="hidden"></span>
-  <br><span id="createConsoleRes"> Response:</span>
-  <span id="createConsoleRes" class="hidden"></span>
+  <br><span id="createHideBody" class="hidden"> Body:</span><span id="createConsoleBody"></span>
+  <br><span id="createHideConsoleRes" class="hidden"> Response:</span><span id="createConsoleRes"></span>
 </pre>
   </div>
 <!--........................................................-->
