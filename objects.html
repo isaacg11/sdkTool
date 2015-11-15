@@ -77,6 +77,9 @@
 <div id="create">
   <ul  class="collection z-depth-1 objectOutput">
       <li class="collection-item center header"><b>New Book Data</b>
+      <li class="collection-item data center">
+        <img src="public/images/book.jpg" class="outputData" id="bookImage"/>
+      </li>
       <li class="collection-item data"><b>Book Title:</b>
       <span class="outputData" id="objectOutputName"></span></li>
       <li class="collection-item data"><b>Author:</b>
@@ -95,7 +98,6 @@
       <div class="row">
         <div 
           id="input"
-          onclick="resetCreated()" 
           class="input-field col s12">
           <input  
             placeholder="Book Title..." 
@@ -104,7 +106,6 @@
         </div>
         <div 
           id="input"
-          onclick="reset()" 
           class="input-field col s12">
         <input  
           placeholder="Author..." 
@@ -113,7 +114,6 @@
         </div>
         <div 
           id="input"
-          onclick="reset()" 
           class="input-field col s12">
         <input  
           placeholder="Price..." 
@@ -122,15 +122,22 @@
         </div>
          <div 
           id="input"
-          onclick="reset()" 
           class="input-field col s12">
           <input
             placeholder="Date Published..." 
             id="objectDate" 
             type="date" 
             class="datepicker">
+          </div>
+          <div 
+          id="input"
+          class="input-field col s12">
+          <input  
+          placeholder="Image URL..." 
+          id="objectImg" 
+          type="text">
+          </div>
         </div>
-      </div>
       <div class="row center">
         <div class="input-field col s12">
           <a 
@@ -156,12 +163,14 @@
 <!--........................................................-->
   <div id="sourceCodeCreate" class="z-depth-1 row">
 <pre>
+ Stamplay.init('sdktool');
   
  function createObject(){
    var objectName = document.getElementById('objectName').value;
    var objectAuthor = document.getElementById('objectAuthor').value;
    var objectPrice = document.getElementById('objectPrice').value;
    var objectDate = document.getElementById('objectDate').value;
+   var objectImg = document.getElementById('objectImg').value;
    var published = new Date(objectDate);
    var price = parseFloat(objectPrice);
 
@@ -170,6 +179,7 @@
    objectInstance.set('author', objectAuthor);
    objectInstance.set('price', price);
    objectInstance.set('datePublished', published);
+   objectInstance.set('bookImage', objectImg);
    objectInstance.save()</b>.then(function(){
    });
  }
@@ -179,10 +189,12 @@
 <!--........................................................-->
   <div id="console" class="z-depth-1">
 <pre> <b>Console</b>
-  <span id="consoleCursor" class="blinking-cursor">_</span>
+  <span id="consoleCursorCreate" class="blinking-cursor">_</span>
   <br><span id="createConsoleStatus" class="hidden"> Status: 200 OK</span>
-  <br><span id="createConsoleBody" class="hidden"> Body: {{createBody}}</span>
-  <br><span id="createConsoleResponse" class="hidden"> Response: {{createResponse}}</span>
+  <br><span id="createHideBody"> Body:</span>
+  <span id="createConsoleBody" class="hidden"></span>
+  <br><span id="createConsoleRes"> Response:</span>
+  <span id="createConsoleRes" class="hidden"></span>
 </pre>
   </div>
 <!--........................................................-->

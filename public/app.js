@@ -28,37 +28,53 @@ function createObject(){
 	var objectAuthor = document.getElementById('objectAuthor').value;
 	var objectPrice = document.getElementById('objectPrice').value;
 	var objectDate = document.getElementById('objectDate').value;
+	var objectImg = document.getElementById('objectImg').value;
 	var published = new Date(objectDate);
 	var price = parseFloat(objectPrice);
+
+	console.log(objectImg);
 
 	var objectInstance = new Stamplay.Cobject('book').Model;
 	objectInstance.set('title', objectName);
 	objectInstance.set('author', objectAuthor);
 	objectInstance.set('price', price);
 	objectInstance.set('datePublished', published);
+	objectInstance.set('bookImage', objectImg);
 	objectInstance.save().then(function(){
 
 		var title = objectInstance.get('title');
 		var author = objectInstance.instance.author;
 		var price = objectInstance.instance.price;
-		var datePublished = objectInstance.instance.datepublished;
+		var datePublished = objectInstance.instance.datePublished;
 		var date = objectInstance.get('dt_create');
 		var id = objectInstance.get('_id');
+		var img = objectInstance.get('bookImage');
 		var body = {
 			title: title,
 			author: author,
 			price: price,
-			datePublished: datepublished,
+			datePublished: datePublished,
+			bookImage: img
 		};
 
 		document.getElementById("objectOutputName").innerHTML = title;
 		document.getElementById("objectOutputAuthor").innerHTML = author;
 		document.getElementById("objectOutputDate").innerHTML = date;
 		document.getElementById("objectOutputID").innerHTML = id;
+		document.getElementById("bookImage").src = img;
+		document.getElementById('createConsoleCursor').className = "hidden";
+		document.getElementById('createConsoleStatus').className = "";
+		document.getElementById('createConsoleBody').className = "";
+		document.getElementById('createHideBody').className = "";
+		document.getElementById('createConsoleRes').className = "";
+		document.getElementById('createHideRes').className = "";
+		document.getElementById('createConsoleBody').innerHTML = body;
+
 		document.getElementById("objectName").value = "";
 		document.getElementById("objectAuthor").value = "";
 		document.getElementById("objectPrice").value = "";
 		document.getElementById("objectDate").value = "";
+		document.getElementById("objectImg").value = "";
 	});
 }
 /*----------------------*/

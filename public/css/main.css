@@ -183,6 +183,7 @@ body, html {
 }   
 .tabs .tab a{
 	color: #272D4E;
+	border-right: 1px solid #EEEEEE;
 }
 .tabs .tab a:hover{
 	color: #272D4E;
@@ -387,6 +388,13 @@ body, html {
 	border-color: #EEEEEE;
 	border-style:double;
 	max-height: 73vh;
+}
+.outputData{
+	color: #414B82
+}
+#bookImage{
+	height: 100px;
+	width: 100px;
 }
 #options{
 	margin-top: 30px;
