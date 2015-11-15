@@ -141,6 +141,34 @@ body, html {
 #userFBRight{
 	width: 66%;
 }
+#createLeft{
+	width: 30%;
+	margin-left: 25px;
+}
+#createRight{
+	width: 66%;
+}
+#updateLeft{
+	width: 30%;
+	margin-left: 25px;
+}
+#updateRight{
+	width: 66%;
+}
+#queryLeft{
+	width: 30%;
+	margin-left: 25px;
+}
+#queryRight{
+	width: 66%;
+}
+#rateLeft{
+	width: 30%;
+	margin-left: 25px;
+}
+#rateRight{
+	width: 66%;
+}
 .data{
 	color: #B0B2B5;
 }
@@ -393,6 +421,10 @@ body, html {
 	color: #414B82
 }
 #bookImage{
+	height: 100px;
+	width: 100px;
+}
+#updateImage{
 	height: 100px;
 	width: 100px;
 }

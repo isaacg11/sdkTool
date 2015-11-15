@@ -90,18 +90,44 @@ function createObject(){
 function updateObject(){
 	var newTitle = document.getElementById('title').value;
 	var newAuthor = document.getElementById('author').value;
+	var newImage = document.getElementById('image').value;
 
 	var objectInstance = new Stamplay.Cobject('book').Model;
 	objectInstance.fetch('562ec63677589e2e0f86c23c').then(function(){
     objectInstance.set('title', newTitle);
     objectInstance.set('author', newAuthor);
+    objectInstance.set('bookImage', newImage);
     objectInstance.save().then(function(){
     	
 		document.getElementById('updateOutputName').innerHTML = objectInstance.instance.title;
 		document.getElementById('updateOutputAuthor').innerHTML = objectInstance.instance.author;
 		document.getElementById('updateOutputDate').innerHTML = objectInstance.instance.dt_update;
+		document.getElementById('updateImage').src = objectInstance.instance.bookImage;
+
+		document.getElementById('updateConsoleCursor').className = "hidden";
+		document.getElementById('updateConsoleStatus').className = "";
+		document.getElementById('updateHideBody').className = "";
+		document.getElementById('updateConsoleBody').innerHTML = 
+		"{" + "title:" + " " + "'"+newTitle+"'" + ", " + 
+			"author:" + " " + "'"+newAuthor+"'" + ", " + 
+			"price:" + " " + "'"+newImage+"'" + 
+		"}";
+		document.getElementById('updateHideConsoleRes').className = "";
+		document.getElementById('updateConsoleRes').innerHTML = 
+		"{" + "__v:" + " " + "'"+objectInstance.instance.__v+"'" + ", " + 
+			"_id:" + " " + "'"+objectInstance.instance._id+"'" + ", " + 
+			"comments:" + " " + "'"+objectInstance.instance.actions.comments+"'" + ", " +
+			"ratings:" + " " + "'"+objectInstance.instance.actions.ratings.avg+"'" + ", " + 
+			"votes:" + " " + "'"+objectInstance.instance.actions.votes.users+"'" + ", " + 
+			"appId:" + " " + "'"+objectInstance.instance.appId+"'" + ", " +
+			"cobjectId:" + " " + "'"+objectInstance.instance.cobjectId+"'" + ", " + 
+			"dt_create:" + " " + "'"+objectInstance.instance.dt_create+"'" + ", " + 
+			"dt_update:" + " " + "'"+objectInstance.instance.dt_update+"'" + 
+		"}";
+
 		document.getElementById('title').value = "";
 		document.getElementById('author').value = "";
+		document.getElementById('image').value = "";
     	});
 	});
 }
@@ -362,11 +388,13 @@ window.onload = function(){
 	var author = bookInstance.get('author');
 	var date = bookInstance.get('dt_update');
 	var id = bookInstance.get('_id');
+	var img = bookInstance.get('bookImage');
 	
 	document.getElementById('updateOutputName').innerHTML = title;
 	document.getElementById('updateOutputAuthor').innerHTML = author;
 	document.getElementById('updateOutputDate').innerHTML = date;
 	document.getElementById('updateOutputID').innerHTML = id;
+	document.getElementById('updateImage').src = img;
 	});
 
 	var resturauntInstance = new Stamplay.Cobject('resturaunt').Model;
