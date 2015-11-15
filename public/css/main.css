@@ -31,6 +31,7 @@ body, html {
 }
 #lz{
 	color: #FFFFFF;
+	font-weight: lighter;
 }
 #resourceMenu{
 	margin-top: 10px;
@@ -81,6 +82,8 @@ body, html {
 }
 .tabs .tab a:hover{
 	color: #272D4E;
+    background-color: #FFFFE5;
+    font-weight: bold;
 }
 .tab-row {
 	padding:0 !important;
@@ -114,8 +117,15 @@ body, html {
 	padding-right: 20px;
 	padding-left: 20px;
 }
+.outputHeader{
+	color: #415095;
+}
 #userOutput{
 	margin-top: 15px;
+}
+#userOutputFB{
+	margin-top: 15px;
+	margin-bottom: 0px;
 }
 #userEPLeft{
 	width: 30%;
@@ -195,6 +205,9 @@ body, html {
 }
 .hidden{
 	display: none;
+}
+#logoutBtnHidden{
+	padding-bottom: 30px;
 }
 .codeContent{
 	margin-top: 15px;

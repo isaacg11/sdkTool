@@ -1,6 +1,5 @@
 Stamplay.init('sdktool');
 
-
 /*-----------*/
 /* DROPDOWN  */
 /*-----------*/
@@ -14,7 +13,6 @@ jQuery('.dropdown-button').dropdown({
       alignment: 'left' // Displays dropdown with edge aligned to the left of button
     });
 
-
 /*-----------*/
 /*   DATE    */
 /*-----------*/
@@ -25,7 +23,6 @@ $('.datepicker').pickadate({
 /*----------------------*/
 /* CREATE OBJECT SCRIPT */
 /*----------------------*/
-
 function createObject(){
 	var objectName = document.getElementById('objectName').value;
 	var objectAuthor = document.getElementById('objectAuthor').value;
@@ -54,7 +51,6 @@ function createObject(){
 			datePublished: datepublished,
 		};
 
-
 		document.getElementById("objectOutputName").innerHTML = title;
 		document.getElementById("objectOutputAuthor").innerHTML = author;
 		document.getElementById("objectOutputDate").innerHTML = date;
@@ -65,19 +61,9 @@ function createObject(){
 		document.getElementById("objectDate").value = "";
 	});
 }
-
-function resetCreated(){
-	document.getElementById("objectOutputName").innerHTML = '';
-	document.getElementById("objectOutputAuthor").innerHTML = '';
-	document.getElementById("objectOutputDate").innerHTML = '';
-	document.getElementById("objectOutputID").innerHTML = '';
-}
-
 /*----------------------*/
 /* UPDATE OBJECT SCRIPT */
 /*----------------------*/
-
-
 function updateObject(){
 	var newTitle = document.getElementById('title').value;
 	var newAuthor = document.getElementById('author').value;
@@ -100,7 +86,6 @@ function updateObject(){
 /*----------------------*/
 /* QUERY OBJECT SCRIPT  */
 /*----------------------*/
-
 function queryObject(){
 	var cuisine = document.getElementById('cuisine').value;
 	var city = document.getElementById('city').value;
@@ -121,20 +106,9 @@ function queryObject(){
 		document.getElementById('city').value = ""; 
 	});
 }
-
-function reset(){
-	document.getElementById('queryOutputName').innerHTML = ''; 
-	document.getElementById('queryOutputCuisine').innerHTML = ''; 
-	document.getElementById('queryOutputCity').innerHTML = ''; 
-	document.getElementById('queryOutputAddress').innerHTML = ''; 
-}
-
 /*----------------------------*/
-/* RATE/UPVOTE/REVIEW SCRIPT  */
+/* RATE/VOTE/REVIEW SCRIPT    */
 /*----------------------------*/
-
-
-
 function rateFive(){
 	var a = document.getElementById("fiveStars").checked;
 	if(a === true) {
@@ -288,21 +262,25 @@ function signUp() {
 		document.getElementById('name').value = "";
 		document.getElementById('email').value = "";
 		document.getElementById('password').value = "";
+		document.getElementById('signupBtn').className = "hidden";
+		document.getElementById('logoutBtn').className = "";
 	});
 }
 
+/*-----------*/
+/*  LOGOUT   */
+/*-----------*/
+function logout(){
+	var user = new Stamplay.User().Model;
+	user.logout();
+}
+
+/*-----------*/
+/* FB LOGIN  */
+/*-----------*/
 function facebook(){
 	var newUser = new Stamplay.User().Model;
 	newUser.login('facebook');
-}
-
-
-
-function resetSignUp(){
-		document.getElementById('userOutputName').innerHTML = '';
-		document.getElementById('userOutputEmail').innerHTML = '';
-		document.getElementById('userOutputDate').innerHTML = '';
-		document.getElementById('userOutputID').innerHTML = '';
 }
 
 /*----------------------*/
@@ -336,7 +314,7 @@ window.onload = function(){
 			document.getElementById('consoleBodyFB').innerHTML = " { } ";
 			document.getElementById('consoleResFB').innerHTML = 
 			"{" + "__v:" + " " + "'"+newUser.instance.__v+"'" + ", " + 
-			  	"displayname:" + " " + "'"+newUser.instance.displayname+"'" + ", " + 
+			  	"displayName:" + " " + "'"+newUser.instance.displayName+"'" + ", " + 
 			  	"email:" + " " + "'"+newUser.instance.email+"'" + ", " + 
 			  	"password:" + " " + "'"+newUser.instance.password+"'" + ", " + 
 			  	"givenRole:" + " " + "'"+newUser.instance.givenRole+"'" + ", " +

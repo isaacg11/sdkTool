@@ -16,7 +16,7 @@
       </a>
        <a id="lzHeader" class="brand-logo center hide-on-med-and-down">
         <i id="gradCap" class="fa fa-graduation-cap"> 
-          <b id="lz">Learning Zone</b>
+          <span id="lz">Learning Zone</span>
         </i>
       </a>
       <ul id="resourceMenu" class="right">
@@ -72,6 +72,9 @@
       </div>
       <div id="local">
          <ul id="userOutput" class="collection z-depth-1">
+            <li class="collection-item center outputHeader">
+              <b>User Data</b>
+            </li>
             <li class="collection-item data"><b>Display Name:</b>
             <span id="userOutputName"></span></li>
             <li class="collection-item data"><b>Email: </b>
@@ -85,7 +88,7 @@
        <div id="local" class="row z-depth-1 inputBoxLocal">
           <form class="col s12">
             <div class="row">
-                <div onclick="resetSignUp()" class="input-field col s12">
+                <div class="input-field col s12">
                 <br>
                   <input  
                    placeholder="Display Name"
@@ -110,7 +113,7 @@
                 </div>
               </div>
               <div class="row">
-              <div class="input-field col s12 center">
+              <div id="signupBtn" class="input-field col s12 center">
                   <a 
                   onclick="signUp()" 
                   id="btn" 
@@ -118,6 +121,16 @@
                   <i class="fa fa-rocket right"></i>
                   Sign Up
                   </a>
+              </div>
+            </div>
+            <div id="logoutBtn" class="row hidden">
+              <div id="logoutBtnHidden" class="input-field col s12 center">
+                <a 
+                  onclick="logout()"
+                  id="btn" 
+                  class="waves-effect waves-light btn-large">
+                <i class="fa fa-power-off right"></i>Logout
+                </a>
               </div>
             </div>
           </form>
@@ -137,7 +150,7 @@
 <!--........................................................-->
 <pre>
 Stamplay.init('sdktool');
-
+//SIGN UP
  function signUp() {
   var name = document.getElementById("name").value;
   var email = document.getElementById("email").value;
@@ -151,6 +164,12 @@ Stamplay.init('sdktool');
   var newUser = new Stamplay.User().Model;
   <b>newUser.signup(registrationData)</b>.then(function(){
   });
+
+  //LOGOUT
+  function logout(){
+  var user = new Stamplay.User().Model;
+  <b>user.logout()</b>;
+}
 </pre>
 <!--........................................................-->
     </div>
@@ -181,7 +200,10 @@ Stamplay.init('sdktool');
       </div>
 <!--FACEBOOK USER OUTPUT SECTION-->
       <div id="facebook" class="col s12">
-         <ul id="userOutput" class="collection z-depth-1">
+         <ul id="userOutputFB" class="collection z-depth-1">
+            <li class="collection-item center outputHeader">
+              <b>User Data</b>
+            </li>
             <li class="collection-item data center">
             <img src="public/images/fb avatar.gif" id="fbPhoto"/></li>
             <li class="collection-item data"><b>Display Name:</b>
