@@ -305,75 +305,118 @@
   </div>
 </div>
 <!--..............................TAB 3...............................-->
-
 <!--QUERY OUTPUT-->
-<div id="query">
-  <ul id="queryResults" class="collection container z-depth-1">
-      <li class="collection-item center queryheader">
-      <b>Resturaunt Query Results</b>
-      <li class="collection-item category"><b>Resturaunt:</b>
-      <span class="queryheader" id="queryOutputName"></span></li>
-      <li class="collection-item category"><b>Cuisine: </b>
-      <span class="queryheader" id="queryOutputCuisine"></span></li>
-      <li class="collection-item category"><b>City: </b>
-      <span class="queryheader" id="queryOutputCity"></span></li>
-      <li class="collection-item category"><b>Address: </b>
-      <span class="queryheader" id="queryOutputAddress"></span></li>
-  </ul>
+  <div id="query" class="row">
+    <div id="queryLeft" class="col s4">
+      <div class="chip">
+        <i class="fa fa-eye"></i> User View
+      </div>
+      <ul id="queryResults" class="collection z-depth-1">
+        <li class="collection-item center queryheader">
+          <b>Restaurant Query Results</b>
+        </li>
+        <li class="collection-item category center">
+          <img id="restaurantImage" src="public/images/food.png" class="queryheader" id="queryOutputName"/>
+        </li>
+        <li class="collection-item category">
+          <b>Restaurant:</b>
+          <span class="queryheader" id="queryOutputName"></span>
+        </li>
+        <li class="collection-item category">
+          <b>Phone: </b>
+          <span class="queryheader" id="queryOutputPhone"></span>
+        </li>
+        <li class="collection-item category">
+          <b>City: </b>
+          <span class="queryheader" id="queryOutputCity"></span>
+        </li>
+        <li class="collection-item category">
+          <b>Address: </b>
+          <span class="queryheader" id="queryOutputAddress"></span>
+        </li>
+      </ul>
 <!--QUERY OPTIONS-->
-  <ul id="options" class="collection container z-depth-1">
-      <li class="collection-item center queryheader"><b>Query Options</b>
-      <li class="collection-item data">
-      <b class="category">Cuisine: </b>
-      <span class="queryheader">American, Chinese, Italian, Mexican</span>
-      </li>
-      <li class="collection-item data">
-      <b class="category">Cities: </b> 
-      <span class="queryheader">San Fransisco, Los Angeles, New York City, Chicago</span>
-      </li>
-  </ul>
-
-  <br>
-  <br>
-<!--QUERY INPUT-->
-  <div class="row container z-depth-1 createSection">
-    <form class="col s12">
-      <div class="row">
-        <p class="center ptag">
-          <b class='queryheader'>Find a resturaunt!</b>
-        </p>
-      </div>
-      <div class="row">
-        <div 
-          onclick="reset()" 
-          id="input"
-          class="input-field col s12">
-          <input  
-            placeholder="Cuisine..." 
-            id="cuisine" 
-            type="text">
-        </div>
-        <div 
-          id="input"
-          class="input-field col s12">
-          <input  
-            placeholder="City..." 
-            id="city" 
-            type="text">
-        </div>
-      </div>
-      <div class="row center">
+      <div id="options">
         <div class="input-field col s12">
-          <a 
-            onclick="queryObject()" 
-            id="btn" 
-            class="waves-effect waves-light btn-large">
-          <i class="fa fa-search right"></i></i>Query Object</a>
+          <p class="center queryheader"><b>Search for a restaurant!</b></p>
+          <br>
+          <select id="cuisineDropdown">
+            <option id="cuisineOption" value="" disabled selected>Cuisine</option>
+            <option value="American">American</option>
+            <option value="Chinese">Chinese</option>
+            <option value="Italian">Italian</option>
+            <option value="Mexican">Mexican</option>
+          </select>
+        </div>
+        <div class="input-field col s12">
+          <select id="cityDropdown">
+            <option value="" disabled selected>City</option>
+            <option value="Los Angeles">Los Angeles</option>
+            <option value="New York">New York</option>
+            <option value="Chicago">Chicago</option>
+            <option value="San Fransisco">San Fransisco</option>
+          </select>
+          <br>
         </div>
       </div>
-    </form>
+<!--QUERY INPUT-->
+      <div class="row z-depth-1 createSection">
+        <form class="col s12">
+          <div class="row">
+            <div class="input-field col s12">
+              <a 
+                onclick="queryObject()" 
+                id="btn" 
+                class="waves-effect waves-light btn-large">
+                <i class="fa fa-search right"></i>Query Object
+              </a>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div id="queryRight" class= "col s8">
+      <div class="chip">
+        <i class="fa fa-code"></i> Code Details
+      </div>
+      <div class="z-depth-1 codeContent">
+        <i class="fa fa-github small right github tooltipped" data-position="bottom" data-delay="50" data-tooltip="view full code"></i><span><i class="fa fa-youtube-square small right youtube tooltipped" data-position="bottom" data-delay="50" data-tooltip="view tutorial"></i></span>
+        <pre> SDK Function - Query Object<input class="left" type="text" ng-model="textToCopyQuery" value=" equalTo() + fetch()">
+        </pre>
+      </div>
+<!--........................................................-->
+      <div id="sourceCodeQuery" class="z-depth-1 row">
+      <div id="queryCtrl" class="col s12"> 
+<pre>
+ Stamplay.init('sdktool');
+
+ function queryObject(){
+  var selectCuisine = document.getElementById("cuisineDropdown");
+  var cuisine = selectCuisine.options[selectCuisine.selectedIndex].value;
+
+  var selectCity = document.getElementById("cityDropdown");
+  var city = selectCity.options[selectCity.selectedIndex].value;
+
+  var objectCollection = new Stamplay.Cobject('resturaunt').Collection;
+  <b>objectCollection.equalTo("cuisine", cuisine).equalTo("city", city).fetch()</b>
+  .then(function() {
+  });
+  }
+</pre>
+        </div>
+      </div>
+<!--........................................................-->
+      <div id="console" class="z-depth-1">
+<pre> <b>Console</b>
+  <span id="queryConsoleCursor" class="blinking-cursor">_</span>
+  <br><span id="queryConsoleStatus" class="hidden"> Status: 200 OK</span>
+  <br><span id="queryHideBody" class="hidden"> Body:</span><span id="queryConsoleBody"></span>
+  <br><span id="queryHideConsoleRes" class="hidden"> Response:</span><span id="queryConsoleRes"></span>
+</pre>
+      </div>
+<!--........................................................-->
+    </div>
   </div>
-</div>
 <!--..............................TAB 4...............................-->
 
 <!--RATING/VOTING OUTPUT-->
@@ -496,8 +539,8 @@
       </div>
     </form>
   </div>
-
 </div>
+
 
 <!--SDK-->
 <script src="//drrjhlchpvi7e.cloudfront.net/libs/stamplay-js-sdk/1.3.0/stamplay.min.js"></script>

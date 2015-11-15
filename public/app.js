@@ -12,7 +12,9 @@ jQuery('.dropdown-button').dropdown({
       belowOrigin: true, // Displays dropdown below the button
       alignment: 'left' // Displays dropdown with edge aligned to the left of button
     });
-
+ jQuery(document).ready(function() {
+    jQuery('select').material_select();
+ });
 /*-----------*/
 /*   DATE    */
 /*-----------*/
@@ -136,23 +138,46 @@ function updateObject(){
 /* QUERY OBJECT SCRIPT  */
 /*----------------------*/
 function queryObject(){
-	var cuisine = document.getElementById('cuisine').value;
-	var city = document.getElementById('city').value;
-	
+ 	var selectCuisine = document.getElementById("cuisineDropdown");
+ 	var cuisine = selectCuisine.options[selectCuisine.selectedIndex].value;
+
+ 	var selectCity = document.getElementById("cityDropdown");
+ 	var city = selectCity.options[selectCity.selectedIndex].value;
+
 	var objectCollection = new Stamplay.Cobject('resturaunt').Collection;
 	objectCollection.equalTo("cuisine", cuisine).equalTo("city", city).fetch().then(function() {
-		var cuisine = objectCollection.instance[0].get('cuisine');
+		var img = objectCollection.instance[0].get('restaurantImage');
 		var resturaunt = objectCollection.instance[0].get('resturaunt');
+		var phone = objectCollection.instance[0].get('phone');
 		var city = objectCollection.instance[0].get('city');
 		var address = objectCollection.instance[0].get('address');
 
+		document.getElementById('restaurantImage').src = img; 
 		document.getElementById('queryOutputName').innerHTML = resturaunt; 
-		document.getElementById('queryOutputCuisine').innerHTML = cuisine; 
+		document.getElementById('queryOutputPhone').innerHTML = phone; 
 		document.getElementById('queryOutputCity').innerHTML = city; 
-		document.getElementById('queryOutputAddress').innerHTML = address; 
+		document.getElementById('queryOutputAddress').innerHTML = address;
 
-		document.getElementById('cuisine').value = ""; 
-		document.getElementById('city').value = ""; 
+		document.getElementById('queryConsoleCursor').className = "hidden";
+		document.getElementById('queryConsoleStatus').className = "";
+		document.getElementById('queryHideBody').className = "";
+		document.getElementById('queryConsoleBody').innerHTML = 
+		"{" + "city:" + " " + "'"+city+"'" + ", " + 
+			"cuisine:" + " " + "'"+cuisine+"'" + 
+		"}";
+		console.log(objectCollection.instance[0].instance);
+		document.getElementById('queryHideConsoleRes').className = "";
+		document.getElementById('queryConsoleRes').innerHTML = 
+		"{" + "__v:" + " " + "'"+objectCollection.instance[0].instance.__v+"'" + ", " + 
+			"_id:" + " " + "'"+objectCollection.instance[0].instance._id+"'" + ", " + 
+			"comments:" + " " + "'"+objectCollection.instance[0].instance.actions.comments[0].text+"'" + ", " +
+			"ratings:" + " " + "'"+objectCollection.instance[0].instance.actions.ratings.avg+"'" + ", " + 
+			"votes:" + " " + "'"+objectCollection.instance[0].instance.actions.votes.users+"'" + ", " + 
+			"appId:" + " " + "'"+objectCollection.instance[0].instance.appId+"'" + ", " +
+			"cobjectId:" + " " + "'"+objectCollection.instance[0].instance.cobjectId+"'" + ", " + 
+			"dt_create:" + " " + "'"+objectCollection.instance[0].instance.dt_create+"'" + ", " + 
+			"dt_update:" + " " + "'"+objectCollection.instance[0].instance.dt_update+"'" + 
+		"}";
 	});
 }
 /*----------------------------*/
