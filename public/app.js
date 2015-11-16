@@ -364,7 +364,6 @@ window.onload = function(){
 	var newUser = new Stamplay.User().Model;
 	newUser.currentUser().then(function(){
 		if(newUser.isLogged() === true){
-			console.log(newUser.instance);
 			var photo = newUser.get('profileImg');
 			var firstName = newUser.instance.identities.facebook._json.first_name;
 			var lastName = newUser.instance.identities.facebook._json.last_name;
@@ -427,7 +426,8 @@ window.onload = function(){
 		var resturaunt = resturauntInstance.instance.resturaunt;
 		var review = resturauntInstance.instance.review;
 		var ratings = resturauntInstance.instance.actions.ratings.avg;
-		var downvotes = resturauntInstance.instance.actions.votes.users_downvote;
+		var downvotes = resturauntInstance.instance.actions.votes.users_downvote; 
+		var img = resturauntInstance.instance.restaurantImage;
 
 		for(var i = 0; i<downvotes.length; i++){
     			downvotes = downvotes.length;
@@ -437,6 +437,7 @@ window.onload = function(){
     			upvotes = upvotes.length;
 		}
 		var totalLikes = upvotes - downvotes;
+		document.getElementById('rateRestaurant').src = img;
 		document.getElementById('rateOutputName').innerHTML = resturaunt;
 		document.getElementById('rateOutputReview').innerHTML = review;
 		document.getElementById('rateOutputRatings').innerHTML = ratings;

@@ -468,6 +468,10 @@ body, html {
 	height: 150px;
 	width: 250px;
 }
+#rateRestaurant{
+	height: 150px;
+	width: 250px;
+}
 .dropdown-content li > a, .dropdown-content li > span {
     font-size: 1.2rem;
     color: #414b82;
@@ -488,12 +492,10 @@ body, html {
 	background-color: #FFFFFF;
 }
 #voteSection{
-	width: 40%;
 	background-color: #FFFFFF;
 	padding-bottom: 15px;
 }
 #ratingSection{
-	width: 40%;
 	background-color: #FFFFFF;
 	padding-bottom: 15px;
 }
