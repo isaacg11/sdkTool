@@ -512,15 +512,18 @@
       </div>
 <!--UPVOTE/DOWNVOTE-->
       <div id="voteSection" class="row center z-depth-1">
+        <p class="center queryheader">
+          <b>Upvote/Downvote resturaunt</b>
+        </p>
         <div class="input-field col s6">
           <a 
-            ng-click="upvote()" 
+            onclick="upvote()" 
             class="waves-effect waves-light btn-large thumbs">
             <i class="fa fa-thumbs-o-up center"></i></a>
         </div>
         <div class="input-field col s6">
           <a 
-            ng-click="downvote()" 
+            onclick="downvote()" 
             class="waves-effect waves-light btn-large thumbs">
             <i class="fa fa-thumbs-o-down center"></i></a>
         </div>
@@ -538,7 +541,6 @@
             id="input"
             class="input-field col s12">
             <input
-              ng-model="newReview"  
               placeholder="Review..." 
               id="review" 
               type="text">
@@ -547,7 +549,7 @@
           <div class="row center">
             <div class="input-field col s12">
             <a 
-              ng-click="review()" 
+              onclick="review()" 
               id="btn" 
               class="waves-effect waves-light btn-large">
               <i class="fa fa-check-square-o right"></i>SUBMIT</a>

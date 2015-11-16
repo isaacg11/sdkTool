@@ -481,6 +481,7 @@ body, html {
 .queryheader{
 	color: #414B82;
 }
+
 #queryResults{
 	margin-top: 15px;
 }
@@ -494,6 +495,7 @@ body, html {
 #voteSection{
 	background-color: #FFFFFF;
 	padding-bottom: 15px;
+	padding-top: 5px;
 }
 #ratingSection{
 	background-color: #FFFFFF;
