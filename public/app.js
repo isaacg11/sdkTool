@@ -191,6 +191,10 @@ function rateFive(){
     		return objectInstance.rate(5).then(function(){
     		var ratings = objectInstance.instance.actions.ratings.avg;
 			document.getElementById('rateOutputRatings').innerHTML = ratings;
+			document.getElementById('rateConsoleCursor').className = "hidden";
+			document.getElementById('rateConsoleStatus').className = "";
+			document.getElementById('rateHideBody').className = "";
+			document.getElementById('rateConsoleBody').innerHTML = {rate: 5};
     		});
   		});
 	}
@@ -255,7 +259,12 @@ function review(){
     			var reviews = objectInstance.getComments();
     			for(i = 0; i<reviews.length; i++){
     				newReview = reviews[i].text;
+    				console.log(newReview);
     				document.getElementById('rateOutputReview').innerHTML = newReview;
+					document.getElementById('rateConsoleCursor').className = "hidden";
+					document.getElementById('rateConsoleStatus').className = "";
+					document.getElementById('rateHideBody').className = "";
+					document.getElementById('rateConsoleBody').innerHTML = "{comment:" + "'"+userReview + "'" + "}";
     			}
     		});
 		});
@@ -271,6 +280,7 @@ function upvote(){
     	});
   	});
 }
+
 function downvote(){
 	var objectInstance = new Stamplay.Cobject('resturaunt').Model;
 	objectInstance.fetch('562ec2ff77589e2e0f86c222').then(function(){		
@@ -424,7 +434,7 @@ window.onload = function(){
 	var resturauntInstance = new Stamplay.Cobject('resturaunt').Model;
 	resturauntInstance.fetch('562ec2ff77589e2e0f86c222').then(function(){
 		var resturaunt = resturauntInstance.instance.resturaunt;
-		var review = resturauntInstance.instance.review;
+		var review = resturauntInstance.instance.actions.comments[0].text;
 		var ratings = resturauntInstance.instance.actions.ratings.avg;
 		var downvotes = resturauntInstance.instance.actions.votes.users_downvote; 
 		var img = resturauntInstance.instance.restaurantImage;

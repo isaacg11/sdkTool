@@ -10,7 +10,7 @@
 <!--NAVBAR-->
   <nav>
     <div id="navbar" class="nav-wrapper z-depth-2">
-      <a>
+      <a href="https://apiapp.stamplayapp.com/#/">
         <img id="wordLogo" src="public/images/logo_White.png"/>
       </a>
        <a id="lzHeader" class="brand-logo center hide-on-med-and-down">
@@ -28,7 +28,7 @@
           </a>
           <ul id='dropdown1' class='dropdown-content'>
               <li class="dropdownitem">
-                <a id="dropdownText1">Main Menu</a>
+                <a href="https://apiapp.stamplayapp.com/#/" id="dropdownText1">Main Menu</a>
               </li>
               <li class="divider"></li>
               <li class="dropdownitem">
@@ -38,13 +38,13 @@
               </li>
               <li class="divider"></li>
               <li class="dropdownitem">
-                <a id="dropdownText2">
+                <a href="https://apiapp.stamplayapp.com/#/users" id="dropdownText2">
                   <i id="userSDK" class="fa fa-user right"></i>[API] - Users
                 </a>
               </li>
               <li class="divider"></li>
               <li class="dropdownitem">
-                <a id="dropdownText3">
+                <a href="https://apiapp.stamplayapp.com/#/objects" id="dropdownText3">
                   <i id="objSDK" class="fa fa-cubes right"></i>[API] - Objects
                 </a>
               </li>
@@ -564,50 +564,59 @@
       </div>
       <span class="center"> 
         <b> NOTE</b>: YOU MUST GO TO 
-          <a ui-sref="Users">[SDK]- USERS</a> AND LOGIN TO USE THIS SECTION
+          <a href="index.html">[SDK]- USERS</a> AND LOGIN TO USE THIS SECTION
       </span>
       <div class="z-depth-1 codeContent">
         <i class="fa fa-github small right github tooltipped" data-position="bottom" data-delay="50" data-tooltip="view full code"></i><span><i class="fa fa-youtube-square small right youtube tooltipped" data-position="bottom" data-delay="50" data-tooltip="view tutorial"></i></span>
-        <pre> API Request Path - Rate Object<input class="left" type="text" ng-model="textToCopyRate">
+        <pre> <b>SDK Function - Rate/Vote/Comment Object</b><input class="left" type="text" value="fetch(id) + rate() || upVote() || downVote() || comment()">
         </pre>
       </div>
 <!--........................................................-->
       <div id="sourceCodeRate" class="z-depth-1 row">
         <div id="rateCtrl" class="col s12"> 
 <pre>
-(function() {
-  'use strict';
-  angular.module('stamplay')
-  .controller('objectController', objectController);
-  objectController.$inject = ['objectFactory', '$state',"$http","$scope", "$stamplay"];
+Stamplay.init('sdktool');
 
-  function objectController(objectFactory, $state, $http, $scope, $stamplay){
-
-//RATE OBJECT
-  $scope.rateFive = function(){
-    var five = 5;
-    objectFactory.rate(five).then(function(res){
-    });
-  };
-//UPVOTE OBJECT
-  $scope.upvote = function(){
-    objectFactory.votePositive().then(function(res){
-    });
-  };
-//DOWNVOTE OBJECT
-  $scope.downvote = function(){
-    objectFactory.voteNegative().then(function(res){
-    });
-  };
-//REVIEW OBJECT
-  $scope.review = function(){
-    var review = $scope.newReview;
-    objectFactory.placeReview(review).then(function(res){
-    });
-  };
-
+//RATE
+function rateFive(){
+  var a = document.getElementById("fiveStars").checked;
+  if(a === true) {
+    var objectInstance = new Stamplay.Cobject('resturaunt').Model;
+    <b>objectInstance.fetch('562ec2ff77589e2e0f86c222').then(function(){
+        return objectInstance.rate(5)</b>.then(function(){
+      });
+    }
+  }
 }
-})();
+
+//UPVOTE
+function upvote(){
+  var objectInstance = new Stamplay.Cobject('resturaunt').Model;
+  <b>objectInstance.fetch('562ec2ff77589e2e0f86c222').then(function(){
+      return objectInstance.upVote(1)</b>.then(function(){
+      });
+  });
+}
+
+//DOWNVOTE
+function downvote(){
+  var objectInstance = new Stamplay.Cobject('resturaunt').Model;
+  <b>objectInstance.fetch('562ec2ff77589e2e0f86c222').then(function(){   
+      return objectInstance.downVote(1)</b>.then(function(){ 
+      });
+  });
+}
+
+//COMMENT
+function review(){
+  var userReview = document.getElementById('review').value;
+  var objectInstance = new Stamplay.Cobject('resturaunt').Model;
+  <b>objectInstance.fetch('562ec2ff77589e2e0f86c222').then(function(){
+    return objectInstance.comment(userReview)</b>.then(function(){
+    });
+  });
+}
+
 </pre>
         </div>
       </div>
@@ -616,13 +625,19 @@
 <pre> <b>Console</b>
   <span id="rateConsoleCursor" class="blinking-cursor">_</span>
   <br><span id="rateConsoleStatus" class="hidden"> Status: 200 OK</span>
-  <br><span id="rateConsoleBody" class="hidden"> Body: {{rateBody}}</span>
-  <br><span id="rateConsoleResponse" class="hidden"> Response: {{rateResponse}}</span>
+  <br><span id="rateHideBody" class="hidden"> Body:</span><span id="rateConsoleBody"></span>
+  <br><span id="rateHideConsoleRes" class="hidden"> Response:</span><span id="rateConsoleRes"></span>
 </pre>
       </div>
 <!--........................................................-->
     </div>
   </div>
+<!--FOOTER-->
+  <br>
+  <br>
+  <footer id="footer" class="page-footer z-depth-1">
+    <div class="container"></div>
+  </footer>
 
 <!--SDK-->
 <script src="//drrjhlchpvi7e.cloudfront.net/libs/stamplay-js-sdk/1.3.0/stamplay.min.js"></script>
