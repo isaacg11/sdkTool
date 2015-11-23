@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Custom Object SDK</title>
+	<title>Stamplay | LZ</title>
 	<link rel="stylesheet" type="text/css" href="public/css/materialize.css">
 	<link rel="stylesheet" type="text/css" href="public/css/main.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
@@ -69,14 +69,14 @@
 <!--..............................TAB 1...............................-->
 
 <!--CREATED OBJECT OUTPUT-->
-<div id="create" class="row">
+<div id="create" class="row moduleBackgroundObj">
     <div id="createLeft" class="col s4">
       <div class="chip">
         <i class="fa fa-eye"></i> User View
       </div>
 <div id="create">
-  <ul  class="collection z-depth-1 objectOutput">
-      <li class="collection-item center header"><b>New Book Data</b>
+  <ul class="collection z-depth-1 objectOutput itemBorder">
+      <li id="viewHeaderCreate" class="collection-item center header"><b>New Book Data</b>
       <li class="collection-item data center">
         <img src="public/images/book.jpg" class="outputData" id="bookImage"/>
       </li>
@@ -90,7 +90,7 @@
       <span class="outputData" id="objectOutputPublished"></span></li>
   </ul>
 <!--CREATE OBJECT INPUT-->
-  <div class="row z-depth-1 createSection">
+  <div class="row z-depth-1 createSection itemBorder">
     <form class="col s12">
       <div class='row'>
         <p class="center header"><b>Create Book Data</b></p>
@@ -201,14 +201,14 @@
 <!--..............................TAB 2...............................-->
 
 <!--UPDATED OBJECT OUTPUT-->
-<div id="update" class="row">
+<div id="update" class="row moduleBackgroundObj">
     <div id="updateLeft" class="col s4">
       <div class="chip">
         <i class="fa fa-eye"></i> User View
       </div>
 <div id="update">
-  <ul class="collection z-depth-1 objectOutput">
-      <li class="collection-item center header"><b>Book Data</b>
+  <ul class="collection z-depth-1 objectOutput itemBorder">
+      <li id="viewHeaderUpdate" class="collection-item center header"><b>Book Data</b>
       <li class="collection-item category center">
           <img id="updateImage" src="" class="outputData"/>
       </li>
@@ -222,7 +222,7 @@
       <span class="outputData" id="updateOutputID"></span></li>
   </ul>
 <!--UPDATE OBJECT INPUT-->
-  <div class="row z-depth-1 createSection">
+  <div class="row z-depth-1 createSection itemBorder">
     <form class="col s12">
       <div class='row'>
         <p class="center header"><b>Update Book Data</b></p>
@@ -306,13 +306,13 @@
 </div>
 <!--..............................TAB 3...............................-->
 <!--QUERY OUTPUT-->
-  <div id="query" class="row">
+  <div id="query" class="row moduleBackgroundObj">
     <div id="queryLeft" class="col s4">
       <div class="chip">
         <i class="fa fa-eye"></i> User View
       </div>
-      <ul id="queryResults" class="collection z-depth-1">
-        <li class="collection-item center queryheader">
+      <ul id="queryResults" class="collection z-depth-1 itemBorder">
+        <li id="viewHeaderQuery" class="collection-item center header">
           <b>Restaurant Query Results</b>
         </li>
         <li class="collection-item category center">
@@ -358,7 +358,6 @@
           </select>
           <br>
         </div>
-      </div>
 <!--QUERY INPUT-->
       <div class="row z-depth-1 createSection">
         <form class="col s12">
@@ -374,6 +373,7 @@
           </div>
         </form>
       </div>
+    </div>
     </div>
     <div id="queryRight" class= "col s8">
       <div class="chip">
@@ -419,13 +419,13 @@
   </div>
 <!--..............................TAB 4...............................-->
 <!--RATING/VOTING OUTPUT-->
-  <div id="rate" class="row">
+  <div id="rate" class="row moduleBackgroundObj">
     <div id="rateLeft" class="col s4">
       <div class="chip">
         <i class="fa fa-eye"></i> User View
       </div>
-      <ul id="queryResults" class="collection z-depth-1">
-        <li class="collection-item center queryheader">
+      <ul id="queryResults" class="collection z-depth-1 itemBorder">
+        <li id="viewHeaderRate" class="collection-item center header">
           <b>Example Resturaunt Data</b>
         </li>
         <li class="collection-item category center">
@@ -453,7 +453,7 @@
         </li>
       </ul>
 <!--RATING-->
-      <div id="ratingSection" class="row z-depth-1">
+      <div id="ratingSection" class="row z-depth-1 itemBorder">
         <form action="#" class="col s12">
           <div class="row queryheader">
             <p class="center">
@@ -511,7 +511,7 @@
         </form>
       </div>
 <!--UPVOTE/DOWNVOTE-->
-      <div id="voteSection" class="row center z-depth-1">
+      <div id="voteSection" class="row center z-depth-1 itemBorder">
         <p class="center queryheader">
           <b>Upvote/Downvote resturaunt</b>
         </p>
@@ -529,7 +529,7 @@
         </div>
       </div>
 <!--REVIEW SECTION-->
-      <div class="row z-depth-1 createSection">
+      <div class="row z-depth-1 createSection itemBorder">
         <form class="col s12">
           <div class="row">
             <p class="center ptag">

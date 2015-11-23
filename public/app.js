@@ -454,4 +454,3 @@ window.onload = function(){
 		document.getElementById('rateOutputLikes').innerHTML = totalLikes;
 	});
 };
-
