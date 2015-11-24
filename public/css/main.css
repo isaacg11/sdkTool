@@ -40,6 +40,16 @@ body, html {
 	font-weight: lighter;
 	font-family: "Roboto";
 }
+#catelogNav{
+	padding-right: 50px;
+	cursor: pointer;
+}
+#catelogNav:hover{
+	padding-right: 50px;
+	cursor: pointer;
+	color: #FBC02D;
+	background-color: #262D4D !important;
+}
 #navSelectUsers:hover{
 	background-color: #262D4D !important;
 	color: #FBC02D;
@@ -619,4 +629,37 @@ body, html {
 	display: flex;
     min-height: 7vh;
     flex-direction: column;
+}
+/*----------------------------------------------------------------------------*/
+/*CATELOG CSS*/
+/*---------------------------------------------------------------------------*/
+
+#backArrow{
+	padding-right: 20px;
+}
+#backArrow:hover{
+	padding-right: 20px;
+	cursor: pointer;
+	color: #FBC02D;
+	background-color: #262D4D !important;
+}
+.categorySelector{
+	margin-right: 10px;
+	margin-left: 10px;
+	border-radius: 10px;
+	background-color: #fff;
+}
+#questionHeader{
+	font-size: 30px;
+	font-weight: lighter;
+}
+.categoryIcons{
+	color: #3D3F4D;
+}
+.categoryBtn{
+	padding-top: 30px;
+	cursor: pointer;
+}
+.shrink{
+	height: 0px;
 }
