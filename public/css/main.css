@@ -643,6 +643,9 @@ body, html {
 	color: #FBC02D;
 	background-color: #262D4D !important;
 }
+.categoryRow{
+	margin-bottom: 0px;
+}
 .categorySelector{
 	margin-right: 10px;
 	margin-left: 10px;
@@ -652,6 +655,7 @@ body, html {
 #questionHeader{
 	font-size: 30px;
 	font-weight: lighter;
+	margin-bottom: 0px;
 }
 .categoryIcons{
 	color: #3D3F4D;
@@ -660,6 +664,7 @@ body, html {
 	padding-top: 30px;
 	cursor: pointer;
 }
-.shrink{
-	height: 0px;
+.modal{
+	width: 45%;
+	border-radius: 4px;
 }

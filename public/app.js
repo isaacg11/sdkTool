@@ -22,6 +22,43 @@ $('.datepicker').pickadate({
     	selectMonths: true,
     	selectYears: 15 
   });
+
+ $(document).ready(function(){
+    // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+    $('.modal-trigger').leanModal();
+  });
+
+function zipDownloadUser(){
+	document.getElementById('userSignUp').className = "animated pulse";
+}
+
+function zipDownloadSocial(){
+	document.getElementById('socialLogin').className = "animated pulse";
+}
+
+function zipDownloadCreateUpdate(){
+	document.getElementById('createUpdate').className = "animated pulse";
+}
+
+function zipDownloadQuery(){
+	document.getElementById('queryObject').className = "animated pulse";
+}
+
+function zipDownloadRate(){
+	document.getElementById('rateObject').className = "animated pulse";
+}
+
+function zipDownloadVote(){
+	document.getElementById('voteObject').className = "animated pulse";
+}
+
+function zipDownloadComment(){
+	document.getElementById('objectComment').className = "animated pulse";
+}
+
+function zipDownloadActions(){
+	document.getElementById('objectActions').className = "animated pulse";
+}
 /*----------------------*/
 /* CREATE OBJECT SCRIPT */
 /*----------------------*/
