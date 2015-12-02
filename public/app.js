@@ -457,7 +457,7 @@ function addCard(){
 	});
 }
 /*----------------------*/
-/* STRIPE - CHARGE CARD    */
+/* STRIPE - CHARGE CARD */
 /*----------------------*/
 function chargeCard(){
 	var userId = document.getElementById('chargeCardUserId').value;
@@ -497,8 +497,26 @@ function chargeCard(){
 			});
 		}
 	});
-   
 }
+/*----------------------*/
+/* STRIPE - SUBSCRIBE   */
+/*----------------------*/
+function newSubscription(){
+	var userId = document.getElementById('newSubscriptionUserId').value;
+	var planId = document.getElementById('newSubscriptionPlanId').value;
+	var stamplayStripe = new Stamplay.Stripe();
+	stamplayStripe.createSubscription(userId, planId)
+	.then(function (res) {
+  		document.getElementById('newSubscriptionId').innerHTML = res.id;
+		document.getElementById('newSubscriptionPlanStarts').innerHTML = res.current_period_start;
+		document.getElementById('newSubscriptionPlanEnds').innerHTML = res.current_period_end;
+		document.getElementById('newSubscriptionUserId').value = "";
+		document.getElementById('newSubscriptionPlanId').value = "";
+	}, function( err ){
+  		console.log(err);
+	});
+}
+
 /*----------------------*/
 /* GET ALL DATA FOR APP */
 /*----------------------*/

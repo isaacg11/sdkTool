@@ -596,20 +596,20 @@
       </li>
       <li class="collection-item data">
         <b>Subscription Id:</b>
-        <span class="outputData" id="objectOutputName">{{newSubscriptionId}}</span>
+        <span class="outputData" id="newSubscriptionId"></span>
       </li>
       <li class="collection-item data">
         <b>Plan Starts:</b>
-        <span class="outputData" id="objectOutputAuthor">{{newSubscriptionPlanStarts}}</span>
+        <span class="outputData" id="newSubscriptionPlanStarts"></span>
       </li>
       <li class="collection-item data">
         <b>Plan Ends: </b>
-        <span class="outputData" id="objectOutputDate">{{newSubscriptionPlanEnds}}</span>
+        <span class="outputData" id="newSubscriptionPlanEnds"></span>
       </li>
     </ul>
 <!--ENROLLMENT INFORMATION INPUT-->
   <div class="row z-depth-1 createSection itemBorder">
-    <form class="col s12" ng-submit="newSubscription()">
+    <div class="col s12" ng-submit="newSubscription()">
       <div class='row'>
         <p class="center header"><b>Customer Info</b></p>
       </div>
@@ -620,9 +620,8 @@
           <input
             placeholder="User Id..."
             type="text"
-            ng-model="newSubscriptionUserId"
+            id="newSubscriptionUserId"
             class="form-control"
-            id="text"
             autocomplete="off">
         </div>
         <div 
@@ -631,23 +630,22 @@
           <input
             placeholder="Plan Id..."
             type="text"
-            ng-model="newSubscriptionPlanId"
+            id="newSubscriptionPlanId"
             class="form-control"
-            id="text"
             autocomplete="off">
         </div>
       </div>
       <div class="row center">
         <div class="input-field col s12">
           <button
-            type="submit" 
+            onclick="newSubscription()"
             id="btn" 
             class="waves-effect waves-light btn-large">
             <i class="fa fa-credit-card right"></i>Enroll
           </button>
         </div>
       </div>
-    </form>
+    </div>
   </div>
 </div>
 <div id="createRight" class= "col s8">
