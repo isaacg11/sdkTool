@@ -418,6 +418,45 @@ function addCustomer(){
 }
 
 /*----------------------*/
+/* STRIPE - ADD CARD    */
+/*----------------------*/
+function addCard(){
+	var userId = document.getElementById('addCardUserId').value;
+	var cardNumber = document.getElementById('cardNumber').value;
+	var CVC = document.getElementById('cardCvc').value;
+	var expMonth = document.getElementById('cardExp_month').value;
+	var expYear = document.getElementById('cardExp_year').value;
+	var cardInfo = {
+		number: cardNumber,
+		cvc: CVC,
+		exp_month: expMonth,
+		exp_year: expYear
+	};
+
+	Stripe.card.createToken(cardInfo, function(status, response){
+        if (response.error) {
+            console.log('error', response.error);
+        } else {
+            var token = response.id;
+			var customer = new Stamplay.Stripe();
+			customer.createCreditCard(userId, token)
+			.then(function (res) {
+				document.getElementById('cardBrandOutput').innerHTML = res.brand;
+				document.getElementById('cardIdOutput').innerHTML = res.card_id;
+				document.getElementById('cardCountryOutput').innerHTML = res.country;
+				document.getElementById('cardLast4Output').innerHTML = res.last4;
+				document.getElementById('addCardUserId').value = "";
+				document.getElementById('cardNumber').value = "";
+				document.getElementById('cardCvc').value = "";
+				document.getElementById('cardExp_month').value = "";
+				document.getElementById('cardExp_year').value = "";
+			}, function( err ){
+				console.log(err);
+			});
+		}
+	});
+}
+/*----------------------*/
 /* GET ALL DATA FOR APP */
 /*----------------------*/
 window.onload = function(){
