@@ -447,20 +447,20 @@
       </li>
       <li class="collection-item data">
         <b>Charge:</b>
-        <span class="outputData" id="objectOutputName">{{chargeAmount}}</span>
+        <span class="outputData" id="chargeAmount"></span>
       </li>
       <li class="collection-item data">
         <b>Transaction Number:</b>
-        <span class="outputData" id="objectOutputAuthor">{{transactionNumber}}</span>
+        <span class="outputData" id="transactionNumber"></span>
       </li>
       <li class="collection-item data">
         <b>Transaction Time: </b>
-        <span class="outputData" id="objectOutputDate">{{transactionTime}}</span>
+        <span class="outputData" id="transactionTime"></span>
       </li>
     </ul>
 <!--UPDATE CARD INPUT-->
   <div class="row z-depth-1 createSection itemBorder">
-    <form class="col s12" ng-submit="chargeCard()">
+    <div class="col s12">
       <div class='row'>
         <p class="center header"><b>Card Charges</b></p>
       </div>
@@ -471,9 +471,8 @@
           <input
             placeholder="User Id..."
             type="text"
-            ng-model="chargeCardUserId"
+            id="chargeCardUserId"
             class="form-control"
-            id="text"
             autocomplete="off">
         </div>
         <div 
@@ -482,9 +481,8 @@
           <input
             placeholder="Card Number..."
             type="text"
-            ng-model="card.number"
+            id="chargeCardNumber"
             class="form-control"
-            id="text"
             autocomplete="off">
         </div>
         <div 
@@ -493,9 +491,8 @@
           <input
             placeholder="CVC..."
             type="text"
-            ng-model="card.cvc"
+            id="chargeCardCvc"
             class="form-control"
-            id="text"
             autocomplete="off">
         </div>
         <div 
@@ -504,9 +501,8 @@
           <input
             placeholder="Exp_MM..."
             type="text"
-            ng-model="card.exp_month"
+            id="chargeCardExp_month"
             class="form-control"
-            id="text"
             placeholder="02"
             autocomplete="off">
         </div>
@@ -516,9 +512,8 @@
           <input
             placeholder="Exp_YYYY..."
             type="text"
-            ng-model="card.exp_year"
+            id="chargeCardExp_year"
             class="form-control"
-            id="text"
             placeholder="2015"
             autocomplete="off">
         </div>
@@ -528,9 +523,8 @@
           <input
             placeholder="Amount..."
             type="text"
-            ng-model="amount"
+            id="chargeCardAmount"
             class="form-control"
-            id="text"
             autocomplete="off">
         </div>
         <div 
@@ -539,23 +533,22 @@
           <input
             placeholder="Currency..."
             type="text"
-            ng-model="currency"
+            id="chargeCardCurrency"
             class="form-control"
-            id="text"
             autocomplete="off">
         </div>
       </div>
       <div class="row center">
         <div class="input-field col s12">
           <button
-            type="submit" 
+            onclick="chargeCard()"
             id="btn" 
             class="waves-effect waves-light btn-large">
             <i class="fa fa-credit-card right"></i>Charge Card
           </button>
         </div>
       </div>
-    </form>
+    </div>
   </div>
 </div>
 <div id="createRight" class= "col s8">

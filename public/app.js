@@ -457,6 +457,49 @@ function addCard(){
 	});
 }
 /*----------------------*/
+/* STRIPE - CHARGE CARD    */
+/*----------------------*/
+function chargeCard(){
+	var userId = document.getElementById('chargeCardUserId').value;
+	var cardNumber = document.getElementById('chargeCardNumber').value;
+	var CVC = document.getElementById('chargeCardCvc').value;
+	var expMonth = document.getElementById('chargeCardExp_month').value;
+	var expYear = document.getElementById('chargeCardExp_year').value;
+	var chargeCardInfo = {
+		number: cardNumber,
+		cvc: CVC,
+		exp_month: expMonth,
+		exp_year: expYear
+	};
+	var amount = document.getElementById('chargeCardAmount').value;
+	var total = parseInt(amount);
+	var currency = document.getElementById('chargeCardCurrency').value;
+	Stripe.card.createToken(chargeCardInfo, function(status, response){
+        if (response.error) {
+            console.log('error', response.error);
+        } else {
+            var token = response.id;
+			var customer = new Stamplay.Stripe();
+			customer.charge(userId, token, total, currency)
+			.then(function (res) {
+  				document.getElementById('chargeAmount').innerHTML = res.amount;
+				document.getElementById('transactionNumber').innerHTML = res.id;
+				document.getElementById('transactionTime').innerHTML = res.created;
+				document.getElementById('chargeCardUserId').value = "";
+				document.getElementById('chargeCardNumber').value = "";
+				document.getElementById('chargeCardCvc').value = "";
+				document.getElementById('chargeCardExp_month').value = "";
+				document.getElementById('chargeCardExp_year').value = "";
+				document.getElementById('chargeCardAmount').value = "";
+				document.getElementById('chargeCardCurrency').value = "";
+			}, function( err ){
+  				console.log(err);
+			});
+		}
+	});
+   
+}
+/*----------------------*/
 /* GET ALL DATA FOR APP */
 /*----------------------*/
 window.onload = function(){
