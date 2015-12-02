@@ -12,7 +12,7 @@
 <!--NAVBAR-->
   <nav>
     <div id="navbar" class="nav-wrapper z-depth-2">
-      <a>
+      <a href="https://apiapp.stamplayapp.com/#/">
         <img id="wordLogo" src="public/images/logo_White.png"/>
       </a>
        <a id="lzHeader" class="brand-logo center hide-on-med-and-down">
@@ -22,7 +22,7 @@
       </a>
       <ul id="resourceMenu" class="right">
       <li>
-          <a href="catelog.html" id="catelogNav">CATALOG</a>
+          <a href="stripe.html" id="catelogNav">CATALOG</a>
       </li>
       <li><a
             id="navSelectUsers" 
@@ -33,7 +33,7 @@
           </a>
           <ul id='dropdown1' class='dropdown-content'>
               <li class="dropdownitem">
-                <a id="dropdownText1">Main Menu</a>
+                <a id="dropdownText1" href="https://apiapp.stamplayapp.com/#/">Main Menu</a>
               </li>
               <li class="divider"></li>
               <li class="dropdownitem">
@@ -43,13 +43,13 @@
               </li>
               <li class="divider"></li>
               <li class="dropdownitem">
-                <a id="dropdownText2">
+                <a id="dropdownText2" href="https://apiapp.stamplayapp.com/#/users">
                   <i id="userSDK" class="fa fa-user right"></i>[API] - Users
                 </a>
               </li>
               <li class="divider"></li>
               <li class="dropdownitem">
-                <a id="dropdownText3">
+                <a id="dropdownText3" href="https://apiapp.stamplayapp.com/#/objects">
                   <i id="objSDK" class="fa fa-cubes right"></i>[API] - Objects
                 </a>
               </li>
@@ -275,6 +275,18 @@ Stamplay.init('sdktool');
 <script src="./bower_components/jquery/dist/jquery.js"></script>
 <script src="./public/js/materialize.min.js"></script>
 <script src="public/app.js"></script>
+<script type="text/javascript">
+  //DROPDOWN
+  $('.dropdown-button').dropdown({
+      inDuration: 300,
+      outDuration: 225,
+      constrain_width: false, // Does not change width of dropdown to that of the activator
+      hover: true, // Activate on hover
+      gutter: 0, // Spacing from edge
+      belowOrigin: true, // Displays dropdown below the button
+      alignment: 'left' // Displays dropdown with edge aligned to the left of button
+    });
+</script>
 </body>
 </html>
 

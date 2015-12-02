@@ -1,4 +1,5 @@
 Stamplay.init('sdktool');
+Stripe.setPublishableKey('pk_test_HPR6tudq146rHCAxtjl84xm3');
 
 /*-----------*/
 /* DROPDOWN  */
@@ -12,9 +13,6 @@ jQuery('.dropdown-button').dropdown({
       belowOrigin: true, // Displays dropdown below the button
       alignment: 'left' // Displays dropdown with edge aligned to the left of button
     });
- jQuery(document).ready(function() {
-    jQuery('select').material_select();
- });
 /*-----------*/
 /*   DATE    */
 /*-----------*/
@@ -402,6 +400,21 @@ function logout(){
 function facebook(){
 	var newUser = new Stamplay.User().Model;
 	newUser.login('facebook');
+}
+
+/*----------------------*/
+/* STRIPE - ADD CUSTOMER*/
+/*----------------------*/
+function addCustomer(){
+	var id = document.getElementById('newCustomerIdInput').value;
+	var customer = new Stamplay.Stripe();
+	customer.createCustomer(id)
+	.then(function (res) {
+  		document.getElementById('newCustomerIdOutput').innerHTML = res.customer_id;
+  		document.getElementById('newCustomerDtCreateOutput').innerHTML = res.dt_create;
+	}, function( err ){
+  		console.log(err);
+	});
 }
 
 /*----------------------*/
