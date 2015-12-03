@@ -577,7 +577,6 @@ function newSubscription(){
 	var stamplayStripe = new Stamplay.Stripe();
 	stamplayStripe.createSubscription(userId, planId)
 	.then(function (res) {
-		console.log(res);
 		document.getElementById('newSubscriptionConsoleCursor').className = 'hidden';
 		document.getElementById('newSubscriptionConsoleStatus').className = "";
 		document.getElementById('newSubscriptionConsoleBody').className = "";
@@ -624,8 +623,34 @@ function updateSubscription(){
 	var stamplayStripe = new Stamplay.Stripe();
 	stamplayStripe.updateSubscription(userId,subscriptionId,{plan: planId})
 	.then(function (res) {
+		console.log(res);
 		document.getElementById('updateSubscriptionConsoleCursor').className = 'hidden';
 		document.getElementById('updateSubscriptionConsoleStatus').className = "";
+		document.getElementById('updateSubscriptionConsoleBody').className = "";
+		document.getElementById('updateSubscriptionConsoleResponse').className = "";
+		document.getElementById('updateSubscriptionInnerBody').innerHTML =
+			"{" + "userId:" + " " + "'"+userId+"'" + ", " + 
+				  "subscriptionId:" + " " + "'"+subscriptionId+"'" + ", " + 
+				  "plan:" + " " + "'"+planId+"'" + 
+			"}";
+		document.getElementById('updateSubscriptionConsoleInnerResponse').innerHTML =  
+			"{" + "application_fee_percent:" + " " + "'"+res.application_fee_percent+"'" + ", " + 
+			  	"cancel_at_period_end:" + " " + "'"+res.cancel_at_period_end+"'" + ", " + 
+			  	"canceled_at:" + " " + "'"+res.canceled_at+"'" + ", " + 
+			  	"current_period_end:" + " " + "'"+res.current_period_end+"'" + ", " + 
+			  	"current_period_start:" + " " + "'"+res.current_period_start+"'" + ", " +
+			  	"customer:" + " " + "'"+res.customer+"'" + ", " + 
+			  	"discount:" + " " + "'"+res.discount+"'" + ", " + 
+			  	"ended_at:" + " " + "'"+res.ended_at+"'" + ", " + 
+			  	"id:" + " " + "'"+res.id+"'" + ", " + 
+			  	"object:" + " " + "'"+res.object+"'" + ", " + 
+			  	"quantity:" + " " + "'"+res.quantity+"'" + ", " + 
+			  	"start:" + " " + "'"+res.start+"'" + ", " + 
+			  	"status:" + " " + "'"+res.status+"'" + ", " + 
+			  	"tax_percent:" + " " + "'"+res.tax_percent+"'" + ", " + 
+			  	"trial_end:" + " " + "'"+res.trial_end+"'" + ", " + 
+			  	"trial_start:" + " " + "'"+res.trial_start+"'" + 
+			"}";
 		document.getElementById('updateSubscriptionIdOutput').innerHTML = res.id;
 		document.getElementById('updateSubscriptionPlanStarts').innerHTML = res.current_period_start;
 		document.getElementById('updateSubscriptionPlanEnds').innerHTML = res.current_period_end;
