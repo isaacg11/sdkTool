@@ -525,6 +525,33 @@ function chargeCard(){
 			.then(function (res) {
 				document.getElementById('chargeCardConsoleCursor').className = 'hidden';
 				document.getElementById('chargeCardConsoleStatus').className = "";
+				document.getElementById('chargeCardConsoleBody').className = "";
+				document.getElementById('chargeCardConsoleResponse').className = "";
+				document.getElementById('chargeCardInnerBody').innerHTML =
+				"{" + "userId:" + " " + "'"+userId+"'" + ", " + 
+				      "token:" + " " + "'"+token+"'" + ", " + 
+				      "amount:" + " " + "'"+total+"'" + ", " + 
+			  		  "currency:" + " " + "'"+currency+"'" + 
+				"}"; 
+				document.getElementById('chargeCardInnerResponse').innerHTML =  
+				"{" + "amount:" + " " + "'"+res.amount+"'" + ", " + 
+			  		"amount_refunded:" + " " + "'"+res.amount_refunded+"'" + ", " + 
+			  		"application_fee:" + " " + "'"+res.application_fee+"'" + ", " + 
+			  		"balance_transaction:" + " " + "'"+res.balance_transaction+"'" + ", " + 
+			  		"captured:" + " " + "'"+res.captured+"'" + ", " +
+			  		"created:" + " " + "'"+res.created+"'" + ", " + 
+			  		"currency:" + " " + "'"+res.currency+"'" + ", " + 
+			  		"customer:" + " " + "'"+res.customer+"'" + ", " + 
+			  		"currency:" + " " + "'"+res.currency+"'" + ", " + 
+			  		"id:" + " " + "'"+res.id+"'" + ", " + 
+			  		"livemode:" + " " + "'"+res.livemode+"'" + ", " + 
+			  		"object:" + " " + "'"+res.object+"'" + ", " + 
+			  		"paid:" + " " + "'"+res.paid+"'" + ", " + 
+			  		"reciept_email:" + " " + "'"+res.reciept_email+"'" + ", " + 
+			  		"paid:" + " " + "'"+res.paid+"'" + ", " + 
+			  		"refunded:" + " " + "'"+res.refunded+"'" + ", " + 
+			  		"status:" + " " + "'"+res.status+"'" + 
+				"}";
   				document.getElementById('chargeAmount').innerHTML = res.amount;
 				document.getElementById('transactionNumber').innerHTML = res.id;
 				document.getElementById('transactionTime').innerHTML = res.created;
