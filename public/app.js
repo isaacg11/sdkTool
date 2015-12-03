@@ -465,10 +465,22 @@ function addCard(){
 			.then(function (res) {
 				document.getElementById('addCardConsoleCursor').className = 'hidden';
 				document.getElementById('addCardConsoleStatus').className = "";
-				// document.getElementById('addCardConsoleBody').className = "";
-				// document.getElementById('bodyInnerHTML').innerHTML = cardInfo;
-				// document.getElementById('addCardConsoleResponse').className = "";
-				// document.getElementById('responseInnerHTML').innerHTML = res;
+				document.getElementById('addCardConsoleBody').className = "";
+				document.getElementById('addCardConsoleResponse').className = "";
+				document.getElementById('addCardInnerBody').innerHTML =
+				"{" + "userId:" + " " + "'"+userId+"'" + ", " + 
+			  		"token:" + " " + "'"+token+"'" + 
+				"}";
+				document.getElementById('addCardInnerResponse').innerHTML =  
+				"{" + "brand:" + " " + "'"+res.brand+"'" + ", " + 
+			  		"card_id:" + " " + "'"+res.card_id+"'" + ", " + 
+			  		"country:" + " " + "'"+res.country+"'" + ", " + 
+			  		"cvc_check:" + " " + "'"+res.cvc_check+"'" + ", " + 
+			  		"exp_month:" + " " + "'"+res.exp_month+"'" + ", " +
+			  		"exp_year:" + " " + "'"+res.exp_year+"'" + ", " + 
+			  		"fingerprint:" + " " + "'"+res.fingerprint+"'" + ", " + 
+			  		"last4:" + " " + "'"+res.last4+"'" + 
+				"}";
 				document.getElementById('cardBrandOutput').innerHTML = res.brand;
 				document.getElementById('cardIdOutput').innerHTML = res.card_id;
 				document.getElementById('cardCountryOutput').innerHTML = res.country;
