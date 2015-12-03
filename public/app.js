@@ -441,6 +441,12 @@ function addCard(){
 			var customer = new Stamplay.Stripe();
 			customer.createCreditCard(userId, token)
 			.then(function (res) {
+				document.getElementById('addCardConsoleCursor').className = 'hidden';
+				document.getElementById('addCardConsoleStatus').className = "";
+				// document.getElementById('addCardConsoleBody').className = "";
+				// document.getElementById('bodyInnerHTML').innerHTML = cardInfo;
+				// document.getElementById('addCardConsoleResponse').className = "";
+				// document.getElementById('responseInnerHTML').innerHTML = res;
 				document.getElementById('cardBrandOutput').innerHTML = res.brand;
 				document.getElementById('cardIdOutput').innerHTML = res.card_id;
 				document.getElementById('cardCountryOutput').innerHTML = res.country;
@@ -482,6 +488,8 @@ function chargeCard(){
 			var customer = new Stamplay.Stripe();
 			customer.charge(userId, token, total, currency)
 			.then(function (res) {
+				document.getElementById('chargeCardConsoleCursor').className = 'hidden';
+				document.getElementById('chargeCardConsoleStatus').className = "";
   				document.getElementById('chargeAmount').innerHTML = res.amount;
 				document.getElementById('transactionNumber').innerHTML = res.id;
 				document.getElementById('transactionTime').innerHTML = res.created;
@@ -507,6 +515,8 @@ function newSubscription(){
 	var stamplayStripe = new Stamplay.Stripe();
 	stamplayStripe.createSubscription(userId, planId)
 	.then(function (res) {
+		document.getElementById('newSubscriptionConsoleCursor').className = 'hidden';
+		document.getElementById('newSubscriptionConsoleStatus').className = "";
   		document.getElementById('newSubscriptionId').innerHTML = res.id;
 		document.getElementById('newSubscriptionPlanStarts').innerHTML = res.current_period_start;
 		document.getElementById('newSubscriptionPlanEnds').innerHTML = res.current_period_end;

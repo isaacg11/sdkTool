@@ -141,13 +141,22 @@
       </div>
       <div class="z-depth-1 codeContent">
         <a target="_blank" href="https://github.com/isaacg11/starterTemplate-Query-Object-API"><i class="fa fa-github small right github tooltipped" data-position="bottom" data-delay="50" data-tooltip="view full code"></i></a><span><a target="_blank" href="https://youtu.be/3b9vWMsaAJQ"><i class="fa fa-youtube-square small right youtube tooltipped" data-position="bottom" data-delay="50" data-tooltip="view tutorial"></i></a></span>
-        <pre> <b>API Request Path - Add Customer ('POST')</b><input class="left" type="text" ng-model="textToCopyStripeAddCustomer">
+        <pre> <b>SDK Function - Add Customer ('POST')</b><input class="left" type="text" value=" createCustomer(id)"
         </pre>
       </div>
 <!--........................................................-->
       <div id="sourceCodeCreate" class="z-depth-1 row">
 <pre>
+ Stamplay.init('sdktool');
+ Stripe.setPublishableKey('pk_test_HPR6tudq146rHCAxtjl84xm3');
 
+ function addCustomer(){
+  var id = document.getElementById('newCustomerIdInput').value;
+  var customer = new Stamplay.Stripe();
+  <b>customer.createCustomer(id)</b>
+  .then(function (res) {
+  };
+ }
 </pre>
       </div>
 <!--........................................................-->
@@ -273,13 +282,40 @@
   <div class="z-depth-1 codeContent">
     <a target="_blank" href="https://github.com/isaacg11/starterTemplate-Create-Update-Object-API"><i class="fa fa-github small right github tooltipped" data-position="bottom" data-delay="50" data-tooltip="view full code"></i></a><span>
     <a target="_blank" href="https://youtu.be/38KvboCtfWU"><i class="fa fa-youtube-square small right youtube tooltipped" data-position="bottom" data-delay="50" data-tooltip="view tutorial"></i></a></span>
-    <pre> <b>API Request Path - Add Card ('POST')</b><input class="left" type="text" ng-model="textToCopyStripeAddCard">
+    <pre> <b>SDK Function - Add Card ('POST')</b><input class="left" type="text" value=" createCreditCard(userId, token)">
     </pre>
   </div>
 <!--........................................................-->
   <div id="sourceCodeAddCard" class="z-depth-1 row">
 <pre>
+ Stamplay.init('sdktool');
+ Stripe.setPublishableKey('pk_test_HPR6tudq146rHCAxtjl84xm3');
 
+ function addCard(){
+  var userId = document.getElementById('addCardUserId').value;
+  var cardNumber = document.getElementById('cardNumber').value;
+  var CVC = document.getElementById('cardCvc').value;
+  var expMonth = document.getElementById('cardExp_month').value;
+  var expYear = document.getElementById('cardExp_year').value;
+  var cardInfo = {
+    number: cardNumber,
+    cvc: CVC,
+    exp_month: expMonth,
+    exp_year: expYear
+  };
+
+  Stripe.card.createToken(cardInfo, function(status, response){
+      if (response.error) {
+        console.log('error', response.error);
+      } else {
+        var token = response.id;
+        var customer = new Stamplay.Stripe();
+        <b>customer.createCreditCard(userId, token)</b>
+        .then(function (res) {
+        };
+      }
+    });
+   }
 </pre>
   </div>
 <!--........................................................-->
@@ -287,8 +323,12 @@
 <pre> <b>Console</b>
   <span id="addCardConsoleCursor" class="blinking-cursor">_</span>
   <br><span id="addCardConsoleStatus" class="hidden"> Status: 200 OK</span>
-  <br><span id="addCardConsoleBody" class="hidden"> Body: {{addCardBody}}</span>
-  <br><span id="addCardConsoleResponse" class="hidden"> Response: {{addCardResponse}}</span>
+  <br><span id="addCardConsoleBody" class="hidden"> Body:
+    <span id="bodyInnerHTML"></span>
+   </span>
+  <br><span id="addCardConsoleResponse" class="hidden"> Response:
+    <span id="responseInnerHTML"></span>
+   </span>
 </pre>
   </div>
 <!--........................................................-->
@@ -558,13 +598,42 @@
   <div class="z-depth-1 codeContent">
     <a target="_blank" href="https://github.com/isaacg11/starterTemplate-Create-Update-Object-API"><i class="fa fa-github small right github tooltipped" data-position="bottom" data-delay="50" data-tooltip="view full code"></i></a><span>
     <a target="_blank" href="https://youtu.be/38KvboCtfWU"><i class="fa fa-youtube-square small right youtube tooltipped" data-position="bottom" data-delay="50" data-tooltip="view tutorial"></i></a></span>
-    <pre> <b>API Request Path - Charge Card ('POST')</b><input class="left" type="text" ng-model="textToCopyStripeChargeCard">
+    <pre> <b>SDK Function - Charge Card ('POST')</b><input class="left" type="text" value=" charge(userId, token, amount, currency)">
     </pre>
   </div>
 <!--........................................................-->
   <div id="sourceCodeChargeCard" class="z-depth-1 row">
 <pre>
+ Stamplay.init('sdktool');
+ Stripe.setPublishableKey('pk_test_HPR6tudq146rHCAxtjl84xm3');
 
+ function chargeCard(){
+  var userId = document.getElementById('chargeCardUserId').value;
+  var cardNumber = document.getElementById('chargeCardNumber').value;
+  var CVC = document.getElementById('chargeCardCvc').value;
+  var expMonth = document.getElementById('chargeCardExp_month').value;
+  var expYear = document.getElementById('chargeCardExp_year').value;
+  var chargeCardInfo = {
+    number: cardNumber,
+    cvc: CVC,
+    exp_month: expMonth,
+    exp_year: expYear
+  };
+  var amount = document.getElementById('chargeCardAmount').value;
+  var total = parseInt(amount);
+  var currency = document.getElementById('chargeCardCurrency').value;
+  Stripe.card.createToken(chargeCardInfo, function(status, response){
+      if (response.error) {
+        console.log('error', response.error);
+      } else {  
+        var token = response.id;
+        var customer = new Stamplay.Stripe();
+        <b>customer.charge(userId, token, total, currency)</b>
+        .then(function (res) {
+        };
+      }
+  });
+ }
 </pre>
   </div>
 <!--........................................................-->
@@ -655,13 +724,23 @@
   <div class="z-depth-1 codeContent">
     <a target="_blank" href="https://github.com/isaacg11/starterTemplate-Create-Update-Object-API"><i class="fa fa-github small right github tooltipped" data-position="bottom" data-delay="50" data-tooltip="view full code"></i></a><span>
     <a target="_blank" href="https://youtu.be/38KvboCtfWU"><i class="fa fa-youtube-square small right youtube tooltipped" data-position="bottom" data-delay="50" data-tooltip="view tutorial"></i></a></span>
-    <pre> <b>API Request Path - New Subscription ('POST')</b><input class="left" type="text" ng-model="textToCopyStripeNewSubscription">
+    <pre> <b>SDK Function - New Subscription ('POST')</b><input class="left" type="text" value=" createSubscription(userId, planId)">
     </pre>
   </div>
 <!--........................................................-->
   <div id="sourceCodeNewSubscription" class="z-depth-1 row">
 <pre>
+ Stamplay.init('sdktool');
+ Stripe.setPublishableKey('pk_test_HPR6tudq146rHCAxtjl84xm3');
 
+ function newSubscription(){
+  var userId = document.getElementById('newSubscriptionUserId').value;
+  var planId = document.getElementById('newSubscriptionPlanId').value;
+  var stamplayStripe = new Stamplay.Stripe();
+  <b>stamplayStripe.createSubscription(userId, planId)</b>
+  .then(function (res) {
+  };
+ }
 </pre>
   </div>
 <!--........................................................-->
