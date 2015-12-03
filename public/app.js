@@ -1,5 +1,5 @@
 Stamplay.init('sdktool');
-Stripe.setPublishableKey('pk_test_HPR6tudq146rHCAxtjl84xm3');
+Stripe.setPublishableKey('pk_test_468fZQrmwpdHK7cQfx2lHXVI');
 
 /*-----------*/
 /* DROPDOWN  */
@@ -462,6 +462,7 @@ function addCard(){
 		}
 	});
 }
+
 /*----------------------*/
 /* STRIPE - CHARGE CARD */
 /*----------------------*/
@@ -522,6 +523,29 @@ function newSubscription(){
 		document.getElementById('newSubscriptionPlanEnds').innerHTML = res.current_period_end;
 		document.getElementById('newSubscriptionUserId').value = "";
 		document.getElementById('newSubscriptionPlanId').value = "";
+	}, function( err ){
+  		console.log(err);
+	});
+}
+/*--------------------------------*/
+/* STRIPE - UPDATE SUBSCRIPTION   */
+/*--------------------------------*/
+function updateSubscription(){
+	var userId = document.getElementById('updateSubscriptionUserId').value;
+	var subscriptionId = document.getElementById('updateSubscriptionId').value;
+	var planId = document.getElementById('updatePlanId').value;
+
+	var stamplayStripe = new Stamplay.Stripe();
+	stamplayStripe.updateSubscription(userId,subscriptionId,{plan: planId})
+	.then(function (res) {
+		document.getElementById('updateSubscriptionConsoleCursor').className = 'hidden';
+		document.getElementById('updateSubscriptionConsoleStatus').className = "";
+		document.getElementById('updateSubscriptionIdOutput').innerHTML = res.id;
+		document.getElementById('updateSubscriptionPlanStarts').innerHTML = res.current_period_start;
+		document.getElementById('updateSubscriptionPlanEnds').innerHTML = res.current_period_end;
+		document.getElementById('updateSubscriptionUserId').value = "";
+		document.getElementById('updateSubscriptionId').value = "";
+		document.getElementById('updatePlanId').value = "";
 	}, function( err ){
   		console.log(err);
 	});

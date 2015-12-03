@@ -24,7 +24,7 @@
             		class='dropdown-button' 
             		href='#' 
             		data-activates='dropdown1'>
-            			<i class="fa fa-caret-down right"></i>Rest API - Stripe
+            			<i class="fa fa-caret-down right"></i>SDK - Stripe
           			</a>
           		<ul id='dropdown1' class='dropdown-content'>
             		<li class="dropdownitem">
@@ -71,13 +71,13 @@
         		<li class="tab col s2">
           			<a href="#addCard" class="truncate">ADD CARD</a></li>
         		<li class="tab col s2">
-          			<a href="#updateCard" class="truncate">UPDATE CARD</a></li>
-        		<li class="tab col s2">
           			<a href="#chargeCard" class="truncate">CHARGE CARD</a></li>
         		<li class="tab col s2">
           			<a href="#createSub" class="truncate">CREATE SUBSCRIPTION</a></li>
         		<li class="tab col s2">
           			<a href="#updateSub" class="truncate">UPDATE SUBSCRIPTION</a></li>
+            <li class="tab col s2">
+                <a href="#unsubscribe" class="truncate">UNSUBSCRIBE</a></li>
       		</ul>
     	</div>
   	</div>
@@ -334,144 +334,8 @@
 <!--........................................................-->
   </div>
 </div>
-<!--..............................TAB 3...............................-->
-<!--UPDATE CARD-->
-<div id="updateCard" class="row moduleBackgroundObj">
-    <div id="createLeft" class="col s4">
-      <div class="chip">
-          <i class="fa fa-eye"></i> User View
-      </div>
-    <ul class="collection z-depth-1 objectOutput itemBorder">
-      <li id="viewHeaderCreate" class="collection-item center header">
-        <b>Updated Card</b>
-      </li>
-      <li class="collection-item category center">
-          <img src="public/images/stripe.png" id="restaurantImage" class="queryheader" id="queryOutputName"/>
-      </li>
-      <li class="collection-item data">
-        <b>Brand:</b>
-        <span class="outputData" id="objectOutputName">{{updateBrand}}</span>
-      </li>
-      <li class="collection-item data">
-        <b>Card Id:</b>
-        <span class="outputData" id="objectOutputAuthor">{{updateCardId}}</span>
-      </li>
-      <li class="collection-item data">
-        <b>Country: </b>
-        <span class="outputData" id="objectOutputDate">{{updateCardCountry}}</span>
-      </li>
-      <li class="collection-item data">
-        <b>Last 4: </b>
-        <span class="outputData" id="objectOutputId">{{updateCardLast4}}</span>
-      </li>
-    </ul>
-<!--UPDATE CARD INPUT-->
-  <div class="row z-depth-1 createSection itemBorder">
-    <form class="col s12" ng-submit="updateCard()">
-      <div class='row'>
-        <p class="center header"><b>Update Card</b></p>
-      </div>
-      <div class="row">
-        <div 
-          id="input"
-          class="input-field col s12">
-          <input
-            placeholder="User Id..."
-            type="text"
-            ng-model="updateCardUserId"
-            class="form-control"
-            id="text"
-            autocomplete="off">
-        </div>
-        <div 
-          id="input"
-          class="input-field col s12">
-          <input
-            placeholder="Card Number..."
-            type="text"
-            ng-model="card.number"
-            class="form-control"
-            id="text"
-            autocomplete="off">
-        </div>
-        <div 
-          id="input"
-          class="input-field col s12">
-          <input
-            placeholder="CVC..."
-            type="text"
-            ng-model="card.cvc"
-            class="form-control"
-            id="text"
-            autocomplete="off">
-        </div>
-        <div 
-          id="input"
-          class="input-field col s6">
-          <input
-            placeholder="Exp_MM..."
-            type="text"
-            ng-model="card.exp_month"
-            class="form-control"
-            id="text"
-            placeholder="02"
-            autocomplete="off">
-        </div>
-        <div 
-          id="input"
-          class="input-field col s6">
-          <input
-            placeholder="Exp_YYYY..."
-            type="text"
-            ng-model="card.exp_year"
-            class="form-control"
-            id="text"
-            placeholder="2015"
-            autocomplete="off">
-        </div>
-      </div>
-      <div class="row center">
-        <div class="input-field col s12">
-          <button
-            type="submit" 
-            id="btn" 
-            class="waves-effect waves-light btn-large">
-            <i class="fa fa-credit-card right"></i>Update Card
-          </button>
-        </div>
-      </div>
-    </form>
-  </div>
-</div>
-<div id="createRight" class= "col s8">
-  <div class="chip">
-    <i class="fa fa-code"></i> Code Details
-  </div>
-  <div class="z-depth-1 codeContent">
-    <a target="_blank" href="https://github.com/isaacg11/starterTemplate-Create-Update-Object-API"><i class="fa fa-github small right github tooltipped" data-position="bottom" data-delay="50" data-tooltip="view full code"></i></a><span>
-    <a target="_blank" href="https://youtu.be/38KvboCtfWU"><i class="fa fa-youtube-square small right youtube tooltipped" data-position="bottom" data-delay="50" data-tooltip="view tutorial"></i></a></span>
-    <pre> <b>API Request Path - Update Card ('PUT')</b><input class="left" type="text" ng-model="textToCopyStripeAddCard">
-    </pre>
-  </div>
-<!--........................................................-->
-  <div id="sourceCodeUpdateCard" class="z-depth-1 row">
-<pre>
 
-</pre>
-  </div>
-<!--........................................................-->
-  <div id="console" class="z-depth-1">
-<pre> <b>Console</b>
-  <span id="updateCardConsoleCursor" class="blinking-cursor">_</span>
-  <br><span id="updateCardConsoleStatus" class="hidden"> Status: 200 OK</span>
-  <br><span id="updateCardConsoleBody" class="hidden"> Body: {{updateCardBody}}</span>
-  <br><span id="updateCardConsoleResponse" class="hidden"> Response: {{updateCardResponse}}</span>
-</pre>
-  </div>
-<!--........................................................-->
-  </div>
-</div>
-<!--..............................TAB 4...............................-->
+<!--..............................TAB 3...............................-->
 <!--CHARGE CARD-->
 <div id="chargeCard" class="row moduleBackgroundObj">
     <div id="createLeft" class="col s4">
@@ -649,7 +513,7 @@
   </div>
 </div>
 
-<!--..............................TAB 5...............................-->
+<!--..............................TAB 4...............................-->
 <!--ENROLL NEW SUBSCRIPTION-->
 <div id="createSub" class="row moduleBackgroundObj">
     <div id="createLeft" class="col s4">
@@ -772,20 +636,20 @@
       </li>
       <li class="collection-item data">
         <b>Subscription Id:</b>
-        <span class="outputData" id="objectOutputName">{{updateSubscriptionIdOutput}}</span>
+        <span class="outputData" id="updateSubscriptionIdOutput"></span>
       </li>
       <li class="collection-item data">
         <b>Plan Starts:</b>
-        <span class="outputData" id="objectOutputAuthor">{{updateSubscriptionPlanStarts}}</span>
+        <span class="outputData" id="updateSubscriptionPlanStarts"></span>
       </li>
       <li class="collection-item data">
         <b>Plan Ends: </b>
-        <span class="outputData" id="objectOutputDate">{{updateSubscriptionPlanEnds}}</span>
+        <span class="outputData" id="updateSubscriptionPlanEnds"></span>
       </li>
     </ul>
 <!--UPDATE INFORMATION INPUT-->
   <div class="row z-depth-1 createSection itemBorder">
-    <form class="col s12" ng-submit="updateSubscription()">
+    <div class="col s12">
       <div class='row'>
         <p class="center header"><b>Customer Info</b></p>
       </div>
@@ -796,9 +660,8 @@
           <input
             placeholder="User Id..."
             type="text"
-            ng-model="updateSubscriptionUserId"
+            id="updateSubscriptionUserId"
             class="form-control"
-            id="text"
             autocomplete="off">
         </div>
         <div 
@@ -807,9 +670,8 @@
           <input
             placeholder="Subscription Id..."
             type="text"
-            ng-model="updateSubscriptionId"
+            id="updateSubscriptionId"
             class="form-control"
-            id="text"
             autocomplete="off">
         </div>
         <div 
@@ -818,23 +680,22 @@
           <input
             placeholder="New Plan..."
             type="text"
-            ng-model="updatePlan"
+            id="updatePlanId"
             class="form-control"
-            id="text"
             autocomplete="off">
         </div>
       </div>
       <div class="row center">
         <div class="input-field col s12">
           <button
-            type="submit" 
+            onclick="updateSubscription()"
             id="btn" 
             class="waves-effect waves-light btn-large">
             <i class="fa fa-credit-card right"></i>Update Subscription
           </button>
         </div>
       </div>
-    </form>
+    </div>
   </div>
 </div>
 <div id="createRight" class= "col s8">
@@ -858,18 +719,150 @@
 <pre> <b>Console</b>
   <span id="updateSubscriptionConsoleCursor" class="blinking-cursor">_</span>
   <br><span id="updateSubscriptionConsoleStatus" class="hidden"> Status: 200 OK</span>
-  <br><span id="updateSubscriptionConsoleBody" class="hidden"> Body: {{updateSubscriptionConsoleBody}}</span>
-  <br><span id="updateSubscriptionConsoleResponse" class="hidden"> Response: {{updateSubscriptionConsoleResponse}}</span>
+  <br><span id="updateSubscriptionConsoleBody" class="hidden"> Body: </span>
+  <br><span id="updateSubscriptionConsoleResponse" class="hidden"> Response: </span>
 </pre>
   </div>
 <!--........................................................-->
   </div>
 </div>
 
+<!--..............................TAB 5...............................-->
+<!--UNSUBSCRIBE-->
+<div id="unsubscribe" class="row moduleBackgroundObj">
+    <div id="createLeft" class="col s4">
+      <div class="chip">
+          <i class="fa fa-eye"></i> User View
+      </div>
+    <ul class="collection z-depth-1 objectOutput itemBorder">
+      <li id="viewHeaderCreate" class="collection-item center header">
+        <b>Updated Card</b>
+      </li>
+      <li class="collection-item category center">
+          <img src="public/images/stripe.png" id="restaurantImage" class="queryheader" id="queryOutputName"/>
+      </li>
+      <li class="collection-item data">
+        <b>Brand:</b>
+        <span class="outputData" id="updateBrand"></span>
+      </li>
+      <li class="collection-item data">
+        <b>Card Id:</b>
+        <span class="outputData" id="updateCardId"></span>
+      </li>
+      <li class="collection-item data">
+        <b>Country: </b>
+        <span class="outputData" id="updateCardCountry"></span>
+      </li>
+      <li class="collection-item data">
+        <b>Last 4: </b>
+        <span class="outputData" id="updateCardLast4"></span>
+      </li>
+    </ul>
+<!--UPDATE CARD INPUT-->
+  <div class="row z-depth-1 createSection itemBorder">
+    <div class="col s12" ng-submit="updateCard()">
+      <div class='row'>
+        <p class="center header"><b>Update Card</b></p>
+      </div>
+      <div class="row">
+        <div 
+          id="input"
+          class="input-field col s12">
+          <input
+            placeholder="User Id..."
+            type="text"
+            id="updateCardUserId"
+            class="form-control"
+            autocomplete="off">
+        </div>
+        <div 
+          id="input"
+          class="input-field col s12">
+          <input
+            placeholder="Card Number..."
+            type="text"
+            id="updateCardNumber"
+            class="form-control"
+            autocomplete="off">
+        </div>
+        <div 
+          id="input"
+          class="input-field col s12">
+          <input
+            placeholder="CVC..."
+            type="text"
+            id="updateCardCvc"
+            class="form-control"
+            autocomplete="off">
+        </div>
+        <div 
+          id="input"
+          class="input-field col s6">
+          <input
+            placeholder="Exp_MM..."
+            type="text"
+            id="updateCardExp_month"
+            class="form-control"
+            placeholder="02"
+            autocomplete="off">
+        </div>
+        <div 
+          id="input"
+          class="input-field col s6">
+          <input
+            placeholder="Exp_YYYY..."
+            type="text"
+            id="updateCardExp_year"
+            class="form-control"
+            placeholder="2015"
+            autocomplete="off">
+        </div>
+      </div>
+      <div class="row center">
+        <div class="input-field col s12">
+          <button
+            onclick="updateCard()"
+            id="btn" 
+            class="waves-effect waves-light btn-large">
+            <i class="fa fa-credit-card right"></i>Update Card
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="createRight" class= "col s8">
+  <div class="chip">
+    <i class="fa fa-code"></i> Code Details
+  </div>
+  <div class="z-depth-1 codeContent">
+    <a target="_blank" href="https://github.com/isaacg11/starterTemplate-Create-Update-Object-API"><i class="fa fa-github small right github tooltipped" data-position="bottom" data-delay="50" data-tooltip="view full code"></i></a><span>
+    <a target="_blank" href="https://youtu.be/38KvboCtfWU"><i class="fa fa-youtube-square small right youtube tooltipped" data-position="bottom" data-delay="50" data-tooltip="view tutorial"></i></a></span>
+    <pre> <b>API Request Path - Update Card ('PUT')</b><input class="left" type="text" ng-model="textToCopyStripeAddCard">
+    </pre>
+  </div>
+<!--........................................................-->
+  <div id="sourceCodeUpdateCard" class="z-depth-1 row">
+<pre>
+
+</pre>
+  </div>
+<!--........................................................-->
+  <div id="console" class="z-depth-1">
+<pre> <b>Console</b>
+  <span id="updateCardConsoleCursor" class="blinking-cursor">_</span>
+  <br><span id="updateCardConsoleStatus" class="hidden"> Status: 200 OK</span>
+  <br><span id="updateCardConsoleBody" class="hidden"> Body: {{updateCardBody}}</span>
+  <br><span id="updateCardConsoleResponse" class="hidden"> Response: {{updateCardResponse}}</span>
+</pre>
+  </div>
+<!--........................................................-->
+  </div>
+</div>
 
 <!--SDK-->
 <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
-<script src="//drrjhlchpvi7e.cloudfront.net/libs/stamplay-js-sdk/1.3.0/stamplay.min.js"></script>
+<script src="//drrjhlchpvi7e.cloudfront.net/libs/stamplay-js-sdk/1.3.2/stamplay.min.js"></script>
 <script src="./bower_components/jquery/dist/jquery.js"></script>
 <script src="./public/js/materialize.min.js"></script>
 <script src="public/app.js"></script>
