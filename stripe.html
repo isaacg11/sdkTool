@@ -164,8 +164,8 @@
 <pre> <b>Console</b>
   <span id="addCustomerConsoleCursor" class="blinking-cursor">_</span>
   <br><span id="addCustomerConsoleStatus" class="hidden"> Status: 200 OK</span>
-  <br><span id="addCustomerConsoleBody" class="hidden"> Body: {{addCustomerBody}}</span>
-  <br><span id="addCustomerConsoleResponse" class="hidden"> Response: {{addCustomerResponse}}</span>
+  <br><span id="addCustomerConsoleBody" class="hidden"> Body: <span id="addCustomerInnerBody"></span></span>
+  <br><span id="addCustomerConsoleResponse" class="hidden"> Response: <span id="addCustomerInnerResponse"></span></span>
 </pre>
       </div>
 <!--........................................................-->
@@ -705,13 +705,22 @@
   <div class="z-depth-1 codeContent">
     <a target="_blank" href="https://github.com/isaacg11/starterTemplate-Create-Update-Object-API"><i class="fa fa-github small right github tooltipped" data-position="bottom" data-delay="50" data-tooltip="view full code"></i></a><span>
     <a target="_blank" href="https://youtu.be/38KvboCtfWU"><i class="fa fa-youtube-square small right youtube tooltipped" data-position="bottom" data-delay="50" data-tooltip="view tutorial"></i></a></span>
-    <pre> <b>API Request Path - Update Subscription ('PUT')</b><input class="left" type="text" ng-model="textToCopyStripeUpdateSubscription">
+    <pre> <b>SDK Function - Update Subscription ('PUT')</b><input class="left" type="text" value=" updateSubscription(userId,subscriptionId,{plan: planId})">
     </pre>
   </div>
 <!--........................................................-->
   <div id="sourceCodeUpdateSubscription" class="z-depth-1 row">
 <pre>
+ function updateSubscription(){
+  var userId = document.getElementById('updateSubscriptionUserId').value;
+  var subscriptionId = document.getElementById('updateSubscriptionId').value;
+  var planId = document.getElementById('updatePlanId').value;
 
+  var stamplayStripe = new Stamplay.Stripe();
+  <b>stamplayStripe.updateSubscription(userId,subscriptionId,{plan: planId})</b>
+  .then(function (res) {
+  };
+ }
 </pre>
   </div>
 <!--........................................................-->
@@ -736,33 +745,29 @@
       </div>
     <ul class="collection z-depth-1 objectOutput itemBorder">
       <li id="viewHeaderCreate" class="collection-item center header">
-        <b>Updated Card</b>
+        <b>Unsubscribe</b>
       </li>
       <li class="collection-item category center">
           <img src="public/images/stripe.png" id="restaurantImage" class="queryheader" id="queryOutputName"/>
       </li>
       <li class="collection-item data">
-        <b>Brand:</b>
-        <span class="outputData" id="updateBrand"></span>
+        <b>Subscription Id:</b>
+        <span class="outputData" id="unsubscribeId"></span>
       </li>
       <li class="collection-item data">
-        <b>Card Id:</b>
-        <span class="outputData" id="updateCardId"></span>
+        <b>Status:</b>
+        <span class="outputData" id="unsubscribeStatus"></span>
       </li>
       <li class="collection-item data">
-        <b>Country: </b>
-        <span class="outputData" id="updateCardCountry"></span>
-      </li>
-      <li class="collection-item data">
-        <b>Last 4: </b>
-        <span class="outputData" id="updateCardLast4"></span>
+        <b>Cancellation Date: </b>
+        <span class="outputData" id="unsubscribeCancelDate"></span>
       </li>
     </ul>
-<!--UPDATE CARD INPUT-->
+<!--UNSUBSCRIBE INPUT-->
   <div class="row z-depth-1 createSection itemBorder">
     <div class="col s12" ng-submit="updateCard()">
       <div class='row'>
-        <p class="center header"><b>Update Card</b></p>
+        <p class="center header"><b>Subscription Info</b></p>
       </div>
       <div class="row">
         <div 
@@ -771,7 +776,7 @@
           <input
             placeholder="User Id..."
             type="text"
-            id="updateCardUserId"
+            id="unsubscribeUserId"
             class="form-control"
             autocomplete="off">
         </div>
@@ -779,52 +784,20 @@
           id="input"
           class="input-field col s12">
           <input
-            placeholder="Card Number..."
+            placeholder="Subscription Id..."
             type="text"
-            id="updateCardNumber"
+            id="unsubscribeSubscriptionId"
             class="form-control"
-            autocomplete="off">
-        </div>
-        <div 
-          id="input"
-          class="input-field col s12">
-          <input
-            placeholder="CVC..."
-            type="text"
-            id="updateCardCvc"
-            class="form-control"
-            autocomplete="off">
-        </div>
-        <div 
-          id="input"
-          class="input-field col s6">
-          <input
-            placeholder="Exp_MM..."
-            type="text"
-            id="updateCardExp_month"
-            class="form-control"
-            placeholder="02"
-            autocomplete="off">
-        </div>
-        <div 
-          id="input"
-          class="input-field col s6">
-          <input
-            placeholder="Exp_YYYY..."
-            type="text"
-            id="updateCardExp_year"
-            class="form-control"
-            placeholder="2015"
             autocomplete="off">
         </div>
       </div>
       <div class="row center">
         <div class="input-field col s12">
           <button
-            onclick="updateCard()"
+            onclick="unsubscribe()"
             id="btn" 
             class="waves-effect waves-light btn-large">
-            <i class="fa fa-credit-card right"></i>Update Card
+            <i class="fa fa-credit-card right"></i>Unsubscribe
           </button>
         </div>
       </div>
@@ -838,20 +811,28 @@
   <div class="z-depth-1 codeContent">
     <a target="_blank" href="https://github.com/isaacg11/starterTemplate-Create-Update-Object-API"><i class="fa fa-github small right github tooltipped" data-position="bottom" data-delay="50" data-tooltip="view full code"></i></a><span>
     <a target="_blank" href="https://youtu.be/38KvboCtfWU"><i class="fa fa-youtube-square small right youtube tooltipped" data-position="bottom" data-delay="50" data-tooltip="view tutorial"></i></a></span>
-    <pre> <b>API Request Path - Update Card ('PUT')</b><input class="left" type="text" ng-model="textToCopyStripeAddCard">
+    <pre> <b>SDK Function - Unsubscribe ('DELETE')</b><input class="left" type="text" value=" deleteSubscription(userId, subscriptionId)">
     </pre>
   </div>
 <!--........................................................-->
   <div id="sourceCodeUpdateCard" class="z-depth-1 row">
 <pre>
-
+ function unsubscribe(){
+  var userId = document.getElementById('unsubscribeUserId').value;
+  var subscriptionId = document.getElementById('unsubscribeSubscriptionId').value;
+  console.log(subscriptionId);
+  var stamplayStripe = new Stamplay.Stripe();
+  <b>stamplayStripe.deleteSubscription(userId, subscriptionId)</b>
+  .then(function (res) {
+  };
+ }
 </pre>
   </div>
 <!--........................................................-->
   <div id="console" class="z-depth-1">
 <pre> <b>Console</b>
-  <span id="updateCardConsoleCursor" class="blinking-cursor">_</span>
-  <br><span id="updateCardConsoleStatus" class="hidden"> Status: 200 OK</span>
+  <span id="unsubscribeConsoleCursor" class="blinking-cursor">_</span>
+  <br><span id="unsubscribeConsoleStatus" class="hidden"> Status: 200 OK</span>
   <br><span id="updateCardConsoleBody" class="hidden"> Body: {{updateCardBody}}</span>
   <br><span id="updateCardConsoleResponse" class="hidden"> Response: {{updateCardResponse}}</span>
 </pre>

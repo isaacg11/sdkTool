@@ -410,8 +410,30 @@ function addCustomer(){
 	var customer = new Stamplay.Stripe();
 	customer.createCustomer(id)
 	.then(function (res) {
+		console.log(res.billingHistory);
+		document.getElementById('addCustomerConsoleCursor').className = 'hidden';
+		document.getElementById('addCustomerConsoleStatus').className = "";
+		document.getElementById('addCustomerConsoleBody').className = "";
+		document.getElementById('addCustomerConsoleResponse').className = "";
+		document.getElementById('addCustomerInnerBody').innerHTML =  
+		"{" + "userId:" + " " + "'"+id+"'" + 
+		"}";
+		document.getElementById('addCustomerInnerResponse').innerHTML =  
+		"{" + "__v:" + " " + "'"+res.__v+"'" + ", " + 
+			  "_id:" + " " + "'"+res._id+"'" + ", " + 
+			  "appId:" + " " + "'"+res.appId+"'" + ", " + 
+			  "billingHistory:" + " " + "'"+res.billingHistory+"'" + ", " + 
+			  "customer_id:" + " " + "'"+res.customer_id+"'" + ", " +
+			  "dt_create:" + " " + "'"+res.dt_create+"'" + ", " + 
+			  "appId:" + " " + "'"+res.appId+"'" + ", " + 
+			  "livemode:" + " " + "'"+res.livemode+"'" + ", " + 
+			  "subscriptions:" + " " + "'"+res.subscriptions+"'" + ", " +
+			  "userId:" + " " + "'"+res.userId+"'" + 
+		"}"; 
   		document.getElementById('newCustomerIdOutput').innerHTML = res.customer_id;
   		document.getElementById('newCustomerDtCreateOutput').innerHTML = res.dt_create;
+		document.getElementById('newCustomerIdInput').value = "";
+
 	}, function( err ){
   		console.log(err);
 	});
@@ -546,6 +568,27 @@ function updateSubscription(){
 		document.getElementById('updateSubscriptionUserId').value = "";
 		document.getElementById('updateSubscriptionId').value = "";
 		document.getElementById('updatePlanId').value = "";
+	}, function( err ){
+  		console.log(err);
+	});
+}
+/*------------------------*/
+/* STRIPE - UNSUBSCRIBE   */
+/*------------------------*/
+function unsubscribe(){
+	var userId = document.getElementById('unsubscribeUserId').value;
+	var subscriptionId = document.getElementById('unsubscribeSubscriptionId').value;
+	console.log(subscriptionId);
+	var stamplayStripe = new Stamplay.Stripe();
+	stamplayStripe.deleteSubscription(userId, subscriptionId)
+	.then(function (res) {
+		document.getElementById('unsubscribeConsoleCursor').className = 'hidden';
+		document.getElementById('unsubscribeConsoleStatus').className = "";
+		document.getElementById('unsubscribeId').innerHTML = res.id;
+		document.getElementById('unsubscribeStatus').innerHTML = res.status;
+		document.getElementById('unsubscribeCancelDate').innerHTML = res.canceled_at;
+		document.getElementById('unsubscribeUserId').value = "";
+		document.getElementById('unsubscribeSubscriptionId').value = "";
 	}, function( err ){
   		console.log(err);
 	});
