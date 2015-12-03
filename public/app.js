@@ -667,12 +667,35 @@ function updateSubscription(){
 function unsubscribe(){
 	var userId = document.getElementById('unsubscribeUserId').value;
 	var subscriptionId = document.getElementById('unsubscribeSubscriptionId').value;
-	console.log(subscriptionId);
 	var stamplayStripe = new Stamplay.Stripe();
 	stamplayStripe.deleteSubscription(userId, subscriptionId)
 	.then(function (res) {
 		document.getElementById('unsubscribeConsoleCursor').className = 'hidden';
 		document.getElementById('unsubscribeConsoleStatus').className = "";
+		document.getElementById('unsubscribeConsoleBody').className = "";
+		document.getElementById('unsubscribeConsoleResponse').className = "";
+		document.getElementById('unsubscribeInnerBody').innerHTML =
+			"{" + "userId:" + " " + "'"+userId+"'" + ", " + 
+				  "subscriptionId:" + " " + "'"+subscriptionId+"'" +
+			"}";
+		document.getElementById('unsubscribeInnerResponse').innerHTML =  
+			"{" + "application_fee_percent:" + " " + "'"+res.application_fee_percent+"'" + ", " + 
+			  	"cancel_at_period_end:" + " " + "'"+res.cancel_at_period_end+"'" + ", " + 
+			  	"canceled_at:" + " " + "'"+res.canceled_at+"'" + ", " + 
+			  	"current_period_end:" + " " + "'"+res.current_period_end+"'" + ", " + 
+			  	"current_period_start:" + " " + "'"+res.current_period_start+"'" + ", " +
+			  	"customer:" + " " + "'"+res.customer+"'" + ", " + 
+			  	"discount:" + " " + "'"+res.discount+"'" + ", " + 
+			  	"ended_at:" + " " + "'"+res.ended_at+"'" + ", " + 
+			  	"id:" + " " + "'"+res.id+"'" + ", " + 
+			  	"object:" + " " + "'"+res.object+"'" + ", " + 
+			  	"quantity:" + " " + "'"+res.quantity+"'" + ", " + 
+			  	"start:" + " " + "'"+res.start+"'" + ", " + 
+			  	"status:" + " " + "'"+res.status+"'" + ", " + 
+			  	"tax_percent:" + " " + "'"+res.tax_percent+"'" + ", " + 
+			  	"trial_end:" + " " + "'"+res.trial_end+"'" + ", " + 
+			  	"trial_start:" + " " + "'"+res.trial_start+"'" + 
+			"}";
 		document.getElementById('unsubscribeId').innerHTML = res.id;
 		document.getElementById('unsubscribeStatus').innerHTML = res.status;
 		document.getElementById('unsubscribeCancelDate').innerHTML = res.canceled_at;
